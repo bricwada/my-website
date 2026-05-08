@@ -13,6 +13,20 @@ up port="8000":
     @echo "Serving on http://localhost:{{port}}/"
     uv run python -m http.server {{port}}
 
+# 指定ポートを掴んでいるプロセスを停止（デフォルト: 8000）
+# 例: `just down` / `just down 3000`
+down port="8000":
+    #!/usr/bin/env bash
+    set -uo pipefail
+    pids=$(lsof -ti :{{port}} 2>/dev/null || true)
+    if [ -z "$pids" ]; then
+      echo "ポート {{port}} を使用中のプロセスはありません"
+    else
+      echo "ポート {{port}} を使用中のプロセス (PID: $pids) を停止します"
+      kill -9 $pids
+      echo "停止しました"
+    fi
+
 # pre-commit フックをインストール（初回のみ）
 install-hooks:
     uvx pre-commit install
