@@ -1,0 +1,63 @@
+name: バグ報告
+description: サイト上の不具合・表示崩れなどを報告する
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご報告ありがとうございます。再現手順を含めて教えてください。
+  - type: input
+    id: page
+    attributes:
+      label: 発生ページ
+      description: URL もしくはファイル名（例：`builds.html`）
+      placeholder: "https://new-emolgame.com/builds.html"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 不具合の内容
+      description: 何が起きていますか？
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順
+      description: |
+        1. 〜にアクセスする
+        2. 〜をクリックする
+        3. 〜が表示される
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+    validations:
+      required: false
+  - type: dropdown
+    id: device
+    attributes:
+      label: 端末
+      options:
+        - PC（デスクトップ）
+        - スマホ
+        - タブレット
+        - その他
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: ブラウザ / OS
+      placeholder: "Chrome 130 / macOS 15"
+    validations:
+      required: false
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: スクリーンショット / 補足
+      description: 画像をドラッグ＆ドロップで貼り付けできます
