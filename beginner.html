@@ -1,257 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>初心者向け | New Emolgame</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .step-card { background:var(--white); border-radius:12px; padding:1.5rem; box-shadow:0 2px 10px rgba(0,0,0,0.06); margin-bottom:1rem; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start; }
-    .step-num { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--sky),var(--yellow)); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--dark); flex-shrink:0; }
-    .step-content h3 { font-family:'M PLUS Rounded 1c',sans-serif; font-size:1rem; font-weight:800; margin-bottom:0.4rem; }
-    .step-content p { font-size:0.85rem; color:var(--gray); line-height:1.7; }
-    .qa-item { background:var(--white); border-radius:10px; margin-bottom:0.8rem; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
-    .qa-q { padding:1rem 1.2rem; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.2s; }
-    .qa-q:hover { background:var(--sky-light); }
-    .qa-q::after { content:'▼'; font-size:0.7rem; color:var(--gray); transition:transform 0.2s; }
-    .qa-q.open::after { transform:rotate(180deg); }
-    .qa-a { padding:0 1.2rem; max-height:0; overflow:hidden; transition:max-height 0.3s,padding 0.3s; font-size:0.85rem; color:var(--gray); line-height:1.7; }
-    .qa-a.open { max-height:300px; padding:0.8rem 1.2rem 1rem; }
-    .emolga-guide { background:linear-gradient(135deg,#1a2a4a,#1a5a8a); border-radius:12px; padding:1.5rem; color:white; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; margin-bottom:1.5rem; }
-    .emolga-guide img { width:90px; height:90px; object-fit:contain; filter:drop-shadow(0 4px 12px rgba(91,200,245,0.6)); animation:bounce 3s ease-in-out infinite; }
-    .emolga-guide h3 { font-family:'M PLUS Rounded 1c',sans-serif; font-size:1.1rem; font-weight:800; margin-bottom:0.4rem; }
-    .emolga-guide p { font-size:0.85rem; opacity:0.8; line-height:1.7; }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初心者向け | New Emolgame</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .step-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+      .step-num {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--sky), var(--yellow));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        color: var(--dark);
+        flex-shrink: 0;
+      }
+      .step-content h3 {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+      }
+      .step-content p {
+        font-size: 0.85rem;
+        color: var(--gray);
+        line-height: 1.7;
+      }
+      .qa-item {
+        background: var(--white);
+        border-radius: 10px;
+        margin-bottom: 0.8rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .qa-q {
+        padding: 1rem 1.2rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.2s;
+      }
+      .qa-q:hover {
+        background: var(--sky-light);
+      }
+      .qa-q::after {
+        content: "▼";
+        font-size: 0.7rem;
+        color: var(--gray);
+        transition: transform 0.2s;
+      }
+      .qa-q.open::after {
+        transform: rotate(180deg);
+      }
+      .qa-a {
+        padding: 0 1.2rem;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.3s,
+          padding 0.3s;
+        font-size: 0.85rem;
+        color: var(--gray);
+        line-height: 1.7;
+      }
+      .qa-a.open {
+        max-height: 300px;
+        padding: 0.8rem 1.2rem 1rem;
+      }
+      .emolga-guide {
+        background: linear-gradient(135deg, #1a2a4a, #1a5a8a);
+        border-radius: 12px;
+        padding: 1.5rem;
+        color: white;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .emolga-guide img {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 12px rgba(91, 200, 245, 0.6));
+        animation: bounce 3s ease-in-out infinite;
+      }
+      .emolga-guide h3 {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+      }
+      .emolga-guide p {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span>⚡ ポケモン構築紹介専門メディア</span>
+      <span><a href="https://twitter.com/newemolgame" target="_blank">Twitter @newemolgame</a></span>
+    </div>
 
-<div class="topbar">
-  <span>⚡ ポケモン構築紹介専門メディア</span>
-  <span><a href="https://twitter.com/newemolgame" target="_blank">Twitter @newemolgame</a></span>
-</div>
-
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="logo-wrap">
-      <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
-      <div class="logo-text">
-        <span class="main">New Emolgame</span>
-        <span class="sub">ポケモン構築紹介メディア</span>
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="logo-wrap">
+          <img
+            class="logo-sprite"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png"
+            alt="エモンガ"
+          />
+          <div class="logo-text">
+            <span class="main">New Emolgame</span>
+            <span class="sub">ポケモン構築紹介メディア</span>
+          </div>
+        </a>
+        <nav class="header-nav">
+          <a href="index.html">トップ</a>
+          <a href="builds.html">構築紹介</a>
+          <a href="regulation.html">レギュレーション</a>
+          <a href="tournament.html">大会情報</a>
+          <a href="beginner.html" class="active">初心者向け</a>
+        </nav>
+        <div class="header-search">🔍&nbsp; キーワード検索</div>
       </div>
-    </a>
-    <nav class="header-nav">
-      <a href="index.html">トップ</a>
-      <a href="builds.html">構築紹介</a>
-      <a href="regulation.html">レギュレーション</a>
-      <a href="tournament.html">大会情報</a>
-      <a href="beginner.html" class="active">初心者向け</a>
-    </nav>
-    <div class="header-search">🔍&nbsp; キーワード検索</div>
-  </div>
-</header>
+    </header>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <img class="page-hero-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif" alt="エモンガ" style="image-rendering:pixelated;width:80px;height:80px;">
-    <div class="page-hero-text">
-      <div class="breadcrumb">トップ &gt; 初心者向け</div>
-      <h1>🌱 初心者向けガイド</h1>
-      <p>ダブルバトルが初めての方も安心！エモンガと一緒に対戦の基礎から学びましょう⚡</p>
-    </div>
-  </div>
-</div>
-
-<div class="main-wrap">
-  <main>
-    <div class="emolga-guide">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
-      <div>
-        <h3>⚡ エモンガと一緒に強くなろう！</h3>
-        <p>「ポケモンのダブルバトルって難しそう…」と思っていませんか？大丈夫！このページでは基礎からわかりやすく解説します。まずはエモンガの魅力を知るところから始めましょう！</p>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <h2>🚀 ダブルバトル入門 5ステップ</h2>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h3>ダブルバトルとは？</h3>
-        <p>ダブルバトルは、お互いに2匹ずつポケモンを場に出して戦う形式です。シングルバトルと違い、<strong>2匹の連携</strong>が重要になります。たとえばエモンガが「かみなり」を放ち、味方が「でんきエンジン」で強化される…といったコンビが生まれます！</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h3>パーティ（構築）を作ろう</h3>
-        <p>試合に持っていける6匹のポケモンを「パーティ」と言います。その中から選出する4匹を選び、実際に戦うのは2匹ずつ。タイプのバランスや役割分担を意識してみましょう！エモンガはでんき/ひこうタイプで、多くの構築で活躍できます。</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h3>努力値・個体値を理解しよう</h3>
-        <p>ポケモンには「努力値（EV）」と「個体値（IV）」があります。育成次第でステータスが大きく変わります！エモンガのおすすめ努力値は<strong>こうげきやとくこうに252・すばやさに252</strong>の型が基本です。このサイトの育成論記事で詳しく解説しています！</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <h3>天候・フィールド効果を覚えよう</h3>
-        <p>「あまごい（雨）」「にほんばれ（晴れ）」などの天候は、技の威力や特定の戦術に大きく影響します。エモンガ×カイオーガの「雨パ」では、あまごいで<strong>かみなりの命中率が100%</strong>になる！こういった組み合わせを知ることで構築の幅が広がります。</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">5</div>
-      <div class="step-content">
-        <h3>実際に対戦してみよう！</h3>
-        <p>ランクバトルやオンライン大会に参加してみましょう！最初は負けることも多いですが、それが一番の上達の近道です。<strong>このサイトの構築記事</strong>を参考にしながら、自分だけのパーティを作り上げていきましょう！</p>
-      </div>
-    </div>
-
-    <div class="section-head" style="margin-top:2rem;">
-      <h2>❓ よくある質問（Q&A）</h2>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">エモンガって強いんですか？</div>
-      <div class="qa-a">種族値は決して高くないですが、「でんきエンジン」という特性が非常にユニークです！味方の電気技を受けることで攻撃力が2段階アップし、爆発的な火力を出せます。使いこなせば対戦でも十分に活躍できます⚡</div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">構築記事は初心者でも読めますか？</div>
-      <div class="qa-a">このサイトでは、できるだけわかりやすい言葉で解説するように心がけています。専門用語が出てきた場合はこのページのQ&Aで解説していますので、ぜひ参考にしてみてください！</div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">「選出」「立ち回り」ってどういう意味？</div>
-      <div class="qa-a">「選出」は6匹のパーティから実際に使う4匹を選ぶことです。「立ち回り」は試合中のターンごとの行動の判断のことを指します。構築記事では「このポケモンに対してはこう選出する」「序盤はこう動く」などを詳しく解説しています！</div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">レギュレーションって何ですか？</div>
-      <div class="qa-a">公式大会で使用できるポケモンのルールのことです。現在は「レギュレーションJ」が最新で、使えるポケモンが決まっています。エモンガはすべてのレギュレーションで使用可能です！詳しくは<a href="regulation.html" style="color:var(--sky-dark);">レギュレーションページ</a>をご覧ください。</div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">大会に出るにはどうすれば良いですか？</div>
-      <div class="qa-a">公式大会はポケモンの公式アプリ「Pokémon HOME」や「ポケモン トレーナーズウェブサイト」から参加登録できます。草の根大会は主催者のTwitterやDiscordで参加方法が告知されます。このサイトの<a href="tournament.html" style="color:var(--sky-dark);">大会情報ページ</a>でも情報をまとめています！</div>
-    </div>
-
-    <div class="section-head" style="margin-top:2rem;">
-      <h2>📚 初心者向けおすすめ記事</h2>
-    </div>
-
-    <div class="articles-grid">
-      <div class="article-card">
-        <div class="card-img bg1">
-          <span class="cat-badge badge-begin">入門</span>
-          <img class="card-emolga card-emolga-anim" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif" alt="エモンガ">
-        </div>
-        <div class="card-body">
-          <h3>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</h3>
-          <div class="poke-chips"><span class="poke-chip">初心者向け</span><span class="poke-chip">育成論</span></div>
-          <div class="card-meta"><span>2026.04.10</span><span>👁 22,140</span></div>
-        </div>
-      </div>
-
-      <div class="article-card">
-        <div class="card-img bg3">
-          <span class="cat-badge badge-begin">入門</span>
-          <img class="card-emolga card-emolga-front" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
-        </div>
-        <div class="card-body">
-          <h3>はじめてのダブルバトル！エモンガで勝てる初心者向け構築</h3>
-          <div class="poke-chips"><span class="poke-chip">初心者向け</span><span class="poke-chip">エモンガ</span></div>
-          <div class="card-meta"><span>2026.03.20</span><span>👁 9,800</span></div>
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <img
+          class="page-hero-emolga"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif"
+          alt="エモンガ"
+          style="image-rendering: pixelated; width: 80px; height: 80px"
+        />
+        <div class="page-hero-text">
+          <div class="breadcrumb">トップ &gt; 初心者向け</div>
+          <h1>🌱 初心者向けガイド</h1>
+          <p>ダブルバトルが初めての方も安心！エモンガと一緒に対戦の基礎から学びましょう⚡</p>
         </div>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:1.5rem;">
-      <a href="builds.html" class="btn btn-sky">すべての構築記事を見る →</a>
-    </div>
-  </main>
+    <div class="main-wrap">
+      <main>
+        <div class="emolga-guide">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png"
+            alt="エモンガ"
+          />
+          <div>
+            <h3>⚡ エモンガと一緒に強くなろう！</h3>
+            <p>
+              「ポケモンのダブルバトルって難しそう…」と思っていませんか？大丈夫！このページでは基礎からわかりやすく解説します。まずはエモンガの魅力を知るところから始めましょう！
+            </p>
+          </div>
+        </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-widget emolga-widget">
-      <img class="sidebar-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/587.png" alt="エモンガ">
-      <div class="widget-title"><span>🌱</span>はじめての方へ</div>
-      <p>わからないことはTwitterでも気軽に質問してください！エモンガ好きが集まるフレンドリーなコミュニティです⚡</p>
+        <div class="section-head">
+          <h2>🚀 ダブルバトル入門 5ステップ</h2>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>ダブルバトルとは？</h3>
+            <p>
+              ダブルバトルは、お互いに2匹ずつポケモンを場に出して戦う形式です。シングルバトルと違い、<strong>2匹の連携</strong>が重要になります。たとえばエモンガが「かみなり」を放ち、味方が「でんきエンジン」で強化される…といったコンビが生まれます！
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>パーティ（構築）を作ろう</h3>
+            <p>
+              試合に持っていける6匹のポケモンを「パーティ」と言います。その中から選出する4匹を選び、実際に戦うのは2匹ずつ。タイプのバランスや役割分担を意識してみましょう！エモンガはでんき/ひこうタイプで、多くの構築で活躍できます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>努力値・個体値を理解しよう</h3>
+            <p>
+              ポケモンには「努力値（EV）」と「個体値（IV）」があります。育成次第でステータスが大きく変わります！エモンガのおすすめ努力値は<strong>こうげきやとくこうに252・すばやさに252</strong>の型が基本です。このサイトの育成論記事で詳しく解説しています！
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>天候・フィールド効果を覚えよう</h3>
+            <p>
+              「あまごい（雨）」「にほんばれ（晴れ）」などの天候は、技の威力や特定の戦術に大きく影響します。エモンガ×カイオーガの「雨パ」では、あまごいで<strong>かみなりの命中率が100%</strong>になる！こういった組み合わせを知ることで構築の幅が広がります。
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>実際に対戦してみよう！</h3>
+            <p>
+              ランクバトルやオンライン大会に参加してみましょう！最初は負けることも多いですが、それが一番の上達の近道です。<strong>このサイトの構築記事</strong>を参考にしながら、自分だけのパーティを作り上げていきましょう！
+            </p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top: 2rem">
+          <h2>❓ よくある質問（Q&A）</h2>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-q">エモンガって強いんですか？</div>
+          <div class="qa-a">
+            種族値は決して高くないですが、「でんきエンジン」という特性が非常にユニークです！味方の電気技を受けることで攻撃力が2段階アップし、爆発的な火力を出せます。使いこなせば対戦でも十分に活躍できます⚡
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-q">構築記事は初心者でも読めますか？</div>
+          <div class="qa-a">
+            このサイトでは、できるだけわかりやすい言葉で解説するように心がけています。専門用語が出てきた場合はこのページのQ&Aで解説していますので、ぜひ参考にしてみてください！
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-q">「選出」「立ち回り」ってどういう意味？</div>
+          <div class="qa-a">
+            「選出」は6匹のパーティから実際に使う4匹を選ぶことです。「立ち回り」は試合中のターンごとの行動の判断のことを指します。構築記事では「このポケモンに対してはこう選出する」「序盤はこう動く」などを詳しく解説しています！
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-q">レギュレーションって何ですか？</div>
+          <div class="qa-a">
+            公式大会で使用できるポケモンのルールのことです。現在は「レギュレーションJ」が最新で、使えるポケモンが決まっています。エモンガはすべてのレギュレーションで使用可能です！詳しくは<a
+              href="regulation.html"
+              style="color: var(--sky-dark)"
+              >レギュレーションページ</a
+            >をご覧ください。
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-q">大会に出るにはどうすれば良いですか？</div>
+          <div class="qa-a">
+            公式大会はポケモンの公式アプリ「Pokémon HOME」や「ポケモン
+            トレーナーズウェブサイト」から参加登録できます。草の根大会は主催者のTwitterやDiscordで参加方法が告知されます。このサイトの<a
+              href="tournament.html"
+              style="color: var(--sky-dark)"
+              >大会情報ページ</a
+            >でも情報をまとめています！
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top: 2rem">
+          <h2>📚 初心者向けおすすめ記事</h2>
+        </div>
+
+        <div class="articles-grid">
+          <div class="article-card">
+            <div class="card-img bg1">
+              <span class="cat-badge badge-begin">入門</span>
+              <img
+                class="card-emolga card-emolga-anim"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif"
+                alt="エモンガ"
+              />
+            </div>
+            <div class="card-body">
+              <h3>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</h3>
+              <div class="poke-chips">
+                <span class="poke-chip">初心者向け</span><span class="poke-chip">育成論</span>
+              </div>
+              <div class="card-meta"><span>2026.04.10</span><span>👁 22,140</span></div>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="card-img bg3">
+              <span class="cat-badge badge-begin">入門</span>
+              <img
+                class="card-emolga card-emolga-front"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png"
+                alt="エモンガ"
+              />
+            </div>
+            <div class="card-body">
+              <h3>はじめてのダブルバトル！エモンガで勝てる初心者向け構築</h3>
+              <div class="poke-chips">
+                <span class="poke-chip">初心者向け</span><span class="poke-chip">エモンガ</span>
+              </div>
+              <div class="card-meta"><span>2026.03.20</span><span>👁 9,800</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem">
+          <a href="builds.html" class="btn btn-sky">すべての構築記事を見る →</a>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-widget emolga-widget">
+          <img
+            class="sidebar-emolga"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/587.png"
+            alt="エモンガ"
+          />
+          <div class="widget-title"><span>🌱</span>はじめての方へ</div>
+          <p>わからないことはTwitterでも気軽に質問してください！エモンガ好きが集まるフレンドリーなコミュニティです⚡</p>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title"><span>📖</span>入門ガイド目次</div>
+          <ul style="list-style: none; font-size: 0.82rem">
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">① ダブルバトルとは？</li>
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">② パーティを作ろう</li>
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">③ 努力値・個体値</li>
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">④ 天候・フィールド効果</li>
+            <li style="padding: 0.4rem 0">⑤ 実際に対戦しよう！</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title"><span>🔗</span>関連ページ</div>
+          <ul style="list-style: none; font-size: 0.82rem">
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">
+              <a href="builds.html" style="color: var(--sky-dark)">→ 構築記事を読む</a>
+            </li>
+            <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--gray-light)">
+              <a href="regulation.html" style="color: var(--sky-dark)">→ レギュレーション確認</a>
+            </li>
+            <li style="padding: 0.4rem 0"><a href="tournament.html" style="color: var(--sky-dark)">→ 大会情報</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget twitter-widget">
+          <div class="widget-title"><span>🐦</span>質問はTwitterへ！</div>
+          <p style="font-size: 0.8rem; color: var(--gray)">初心者の質問も大歓迎です！</p>
+          <a class="twitter-btn" href="https://twitter.com/newemolgame" target="_blank">𝕏 @newemolgame</a>
+        </div>
+      </aside>
     </div>
 
-    <div class="sidebar-widget">
-      <div class="widget-title"><span>📖</span>入門ガイド目次</div>
-      <ul style="list-style:none;font-size:0.82rem;">
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">① ダブルバトルとは？</li>
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">② パーティを作ろう</li>
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">③ 努力値・個体値</li>
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">④ 天候・フィールド効果</li>
-        <li style="padding:0.4rem 0;">⑤ 実際に対戦しよう！</li>
-      </ul>
-    </div>
-
-    <div class="sidebar-widget">
-      <div class="widget-title"><span>🔗</span>関連ページ</div>
-      <ul style="list-style:none;font-size:0.82rem;">
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);"><a href="builds.html" style="color:var(--sky-dark);">→ 構築記事を読む</a></li>
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);"><a href="regulation.html" style="color:var(--sky-dark);">→ レギュレーション確認</a></li>
-        <li style="padding:0.4rem 0;"><a href="tournament.html" style="color:var(--sky-dark);">→ 大会情報</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-widget twitter-widget">
-      <div class="widget-title"><span>🐦</span>質問はTwitterへ！</div>
-      <p style="font-size:0.8rem;color:var(--gray);">初心者の質問も大歓迎です！</p>
-      <a class="twitter-btn" href="https://twitter.com/newemolgame" target="_blank">𝕏 @newemolgame</a>
-    </div>
-  </aside>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo-wrap">
-        <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
-        <span class="footer-logo-text">New Emolgame</span>
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo-wrap">
+            <img
+              class="footer-sprite"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png"
+              alt="エモンガ"
+            />
+            <span class="footer-logo-text">New Emolgame</span>
+          </div>
+          <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
+        </div>
+        <div class="footer-col">
+          <h4>コンテンツ</h4>
+          <ul>
+            <li><a href="builds.html">構築記事</a></li>
+            <li><a href="tournament.html">大会情報</a></li>
+            <li><a href="regulation.html">レギュレーション</a></li>
+            <li><a href="beginner.html">初心者向け</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サイト情報</h4>
+          <ul>
+            <li><a href="#">運営紹介</a></li>
+            <li><a href="https://twitter.com/newemolgame" target="_blank">お問い合わせ</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+          </ul>
+        </div>
       </div>
-      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
-    </div>
-    <div class="footer-col">
-      <h4>コンテンツ</h4>
-      <ul>
-        <li><a href="builds.html">構築記事</a></li>
-        <li><a href="tournament.html">大会情報</a></li>
-        <li><a href="regulation.html">レギュレーション</a></li>
-        <li><a href="beginner.html">初心者向け</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>サイト情報</h4>
-      <ul>
-        <li><a href="#">運営紹介</a></li>
-        <li><a href="https://twitter.com/newemolgame" target="_blank">お問い合わせ</a></li>
-        <li><a href="#">プライバシーポリシー</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 New Emolgame — Pokémon © Nintendo / Game Freak. Fan site.</div>
-</footer>
+      <div class="footer-bottom">© 2026 New Emolgame — Pokémon © Nintendo / Game Freak. Fan site.</div>
+    </footer>
 
-<script>
-  // Q&Aアコーディオン
-  document.querySelectorAll('.qa-q').forEach(q => {
-    q.addEventListener('click', function() {
-      this.classList.toggle('open');
-      this.nextElementSibling.classList.toggle('open');
-    });
-  });
-</script>
-</body>
+    <script>
+      // Q&Aアコーディオン
+      document.querySelectorAll(".qa-q").forEach((q) => {
+        q.addEventListener("click", function () {
+          this.classList.toggle("open");
+          this.nextElementSibling.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -16,9 +16,5 @@
     "font-family-name-quotes": null,
     "value-keyword-case": null
   },
-  "ignoreFiles": [
-    "node_modules/**/*",
-    "dist/**/*",
-    "build/**/*"
-  ]
+  "ignoreFiles": ["node_modules/**/*", "dist/**/*", "build/**/*"]
 }

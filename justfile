@@ -13,6 +13,14 @@ up port="8000":
     @echo "Serving on http://localhost:{{port}}/"
     uv run python -m http.server {{port}}
 
+# pre-commit フックをインストール（初回のみ）
+install-hooks:
+    uvx pre-commit install
+
+# 全ファイルに pre-commit を実行（CI 等価）
+pre-commit:
+    uvx pre-commit run --all-files
+
 # すべての lint を実行
 lint: lint-html lint-css lint-format
 
