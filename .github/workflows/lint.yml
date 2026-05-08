@@ -14,8 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  html-lint:
-    name: HTML Lint (HTMLHint)
+  pre-commit:
+    name: pre-commit (Prettier / Stylelint / HTMLHint)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,47 +26,12 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install HTMLHint
-        run: npm install --no-save htmlhint@^1
-
-      - name: Run HTMLHint
-        run: npx htmlhint "**/*.html" --ignore "node_modules/**"
-
-  css-lint:
-    name: CSS Lint (Stylelint)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "20"
+          python-version: "3.12"
 
-      - name: Install Stylelint
-        run: |
-          npm install --no-save \
-            stylelint@^16 \
-            stylelint-config-standard@^36
-
-      - name: Run Stylelint
-        run: npx stylelint "**/*.css" --ignore-path .gitignore
-
-  format-check:
-    name: Format Check (Prettier)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
         with:
-          node-version: "20"
-
-      - name: Install Prettier
-        run: npm install --no-save prettier@^3
-
-      - name: Check formatting
-        run: npx prettier --check "**/*.{html,css,md,json,yml,yaml}"
+          extra_args: --all-files

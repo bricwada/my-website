@@ -1,0 +1,43 @@
+default_install_hook_types: [pre-commit]
+default_stages: [pre-commit]
+
+repos:
+  # 共通の基本チェック（末尾空白・改行・JSON/YAML 構文 など）
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  # Prettier: HTML / CSS / Markdown / JSON / YAML を自動整形
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.3.3
+    hooks:
+      - id: prettier
+        types_or: [html, css, markdown, json, yaml]
+
+  # ローカルフック: pre-commit 管理の独立した node_modules で Node 系 lint を実行
+  # （npx -p 直叩きだと stylelint-config-standard の解決に失敗するため language: node を使用）
+  - repo: local
+    hooks:
+      - id: stylelint
+        name: stylelint (--fix)
+        entry: stylelint --fix
+        language: node
+        additional_dependencies:
+          - "stylelint@^16"
+          - "stylelint-config-standard@^36"
+        files: \.css$
+
+      - id: htmlhint
+        name: htmlhint
+        entry: htmlhint
+        language: node
+        additional_dependencies:
+          - "htmlhint@^1"
+        files: \.html$
