@@ -99,7 +99,7 @@ uv --version
 brew install just
 ```
 
-`brew` 以外の導入方法は [just のインストールガイド](https://just.systems/man/en/chapter_4.html) を参照してください。
+`brew` 以外の導入方法は [just の公式リポジトリ](https://github.com/casey/just#packages) を参照してください。
 
 ### 3. ローカルサーバーを起動
 
