@@ -76,19 +76,61 @@ my-website/
 
 静的ファイルだけで動くため、ブラウザで直接 HTML ファイルを開いても大きな問題はありませんが、相対パスや Fetch などの挙動を本番に近づけるためにローカルサーバーを立てるのを推奨します。
 
-Python の標準サーバーを使う場合:
+このリポジトリではローカル開発に以下のツールを使っています。
+
+- [`uv`](https://docs.astral.sh/uv/): Python 環境の管理（ローカルサーバーの起動に使用）
+- [`just`](https://github.com/casey/just): タスクランナー（`make` の現代版）
+
+### 1. uv のインストール（初回のみ）
 
 ```bash
-cd /path/to/my-website
-python3 -m http.server 8000
+brew install uv
 ```
 
-ブラウザで http://localhost:8000/ を開いてください。
-
-Node.js を使う場合（`npx` を利用）:
+`brew` 以外の導入方法は [uv のインストールガイド](https://docs.astral.sh/uv/getting-started/installation/) を参照してください。インストール後はバージョン確認しておくと安心です。
 
 ```bash
-npx serve .
+uv --version
+```
+
+### 2. just のインストール（初回のみ）
+
+```bash
+brew install just
+```
+
+`brew` 以外の導入方法は [just のインストールガイド](https://just.systems/man/en/chapter_4.html) を参照してください。
+
+### 3. ローカルサーバーを起動
+
+```bash
+just up
+```
+
+ブラウザで http://localhost:8000/ を開いてください。ポートを変えたい場合は `just up 3000` のように引数で指定できます。
+
+内部的には `uv run python -m http.server` を実行しており、Python は uv が自動で用意するのでシステム側に Python を入れておく必要はありません。
+
+### 利用可能なタスク
+
+レシピの一覧は次のコマンドで確認できます。
+
+```bash
+just
+```
+
+| コマンド          | 内容                                                |
+| ----------------- | --------------------------------------------------- |
+| `just up [port]`  | ローカルサーバーを起動（デフォルト: 8000）          |
+| `just lint`       | HTML / CSS / フォーマットの lint をまとめて実行     |
+| `just fmt`        | Prettier と Stylelint で自動修正                    |
+
+### just を使わない場合
+
+just を経由せずに直接サーバーを立てたい場合は、uv で同じコマンドを叩けば OK です。
+
+```bash
+uv run python -m http.server 8000
 ```
 
 VS Code を使っている場合は `Live Server` 拡張機能を使うとファイル保存時の自動リロードが便利です。

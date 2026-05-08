@@ -90,17 +90,28 @@ chore(ci): HTMLHint を導入
 
 ## Lint / Format
 
-ローカルで実行する場合は Node.js (>= 20) が必要です。
+ローカルで実行する場合は Node.js (>= 20) と [`just`](https://github.com/casey/just) が必要です（`brew install just` で導入できます）。
+
+```bash
+just lint    # HTML / CSS / フォーマットの lint をまとめて実行
+just fmt     # Prettier と Stylelint で自動修正
+```
+
+個別に走らせたい場合は次のレシピが使えます。
+
+```bash
+just lint-html      # HTMLHint
+just lint-css       # Stylelint
+just lint-format    # Prettier --check
+```
+
+`just` を使わない場合は `npx` で直接実行することもできます。
 
 ```bash
 npx htmlhint "**/*.html"
 npx stylelint "**/*.css"
 npx prettier --check "**/*.{html,css,md,json,yml}"
-```
 
-自動修正:
-
-```bash
 npx prettier --write "**/*.{html,css,md,json,yml}"
 npx stylelint --fix "**/*.css"
 ```
