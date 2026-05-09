@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>エモンガ×ゴリランダーの電気草パ — レート2000到達記念構築 | New Emolgame</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sky: #5bc8f5;
+      --sky-light: #b3e8fc;
+      --sky-dark: #2aa8e0;
+      --yellow: #f5d800;
+      --yellow-light: #fff9c4;
+      --dark: #1a1f2e;
+      --dark-mid: #2c3347;
+      --white: #ffffff;
+      --gray-light: #f0f4f8;
+      --gray: #8a9ab0;
+      --text: #1a1f2e;
+      --accent: #e85d2f;
+      --card-shadow: 0 4px 20px rgba(91,200,245,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--gray-light); color: var(--text); font-size: 15px; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    .topbar { background: var(--dark); color: rgba(255,255,255,0.55); font-size: 0.7rem; padding: 0.35rem 1.5rem; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.08em; }
+    .topbar a { color: var(--sky-light); }
+    header { background: var(--white); border-bottom: 3px solid var(--sky); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0.55rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-sprite { width: 44px; height: 44px; image-rendering: pixelated; object-fit: contain; filter: drop-shadow(0 1px 4px rgba(91,200,245,0.4)); }
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-text .main { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; background: linear-gradient(135deg, var(--sky-dark), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo-text .sub { font-size: 0.62rem; color: var(--gray); letter-spacing: 0.15em; }
+    .header-nav { display: flex; gap: 0.2rem; }
+    .header-nav a { padding: 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 500; color: var(--dark-mid); border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .header-nav a:hover { background: var(--sky-light); color: var(--sky-dark); }
+    .header-nav a.active { background: var(--sky); color: var(--white); }
+    .header-search { display: flex; align-items: center; gap: 0.5rem; background: var(--gray-light); border: 1.5px solid #dde4ed; border-radius: 20px; padding: 0.38rem 1rem; font-size: 0.8rem; color: var(--gray); cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .header-search:hover { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(91,200,245,0.15); }
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); margin-top: 3rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+    .footer-sprite { width: 32px; height: 32px; image-rendering: pixelated; object-fit: contain; filter: drop-shadow(0 0 6px rgba(91,200,245,0.5)); animation: bounce 4s ease-in-out infinite; }
+    .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.08em; color: var(--sky-light); }
+    footer p { font-size: 0.78rem; line-height: 1.8; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { font-size: 0.75rem; padding: 0.3rem 0; cursor: pointer; transition: color 0.2s; }
+    .footer-col ul li:hover { color: var(--sky-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 1rem; font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-14px) rotate(2deg)} }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+    .breadcrumb { max-width: 860px; margin: 0 auto; padding: 0.85rem 1.5rem; font-size: 0.75rem; color: var(--gray); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sky-dark); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--gray); }
+
+    .article-wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+
+    .article-hero { background: linear-gradient(135deg, #1a3a2a 0%, #2a5a3a 40%, #1a6a30 70%, #2a8a40 100%); border-radius: 16px; overflow: hidden; padding: 2.5rem 2rem; display: grid; grid-template-columns: 1fr 200px; gap: 2rem; align-items: center; margin-bottom: 2rem; position: relative; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(1.5px 1.5px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 60% 15%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.3) 0%, transparent 100%); pointer-events: none; }
+
+    .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; position: relative; z-index: 1; }
+    .badge-pill { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; letter-spacing: 0.1em; }
+    .badge-accent { background: var(--accent); color: white; }
+    .badge-sky { background: var(--sky); color: var(--dark); }
+    .badge-yellow { background: var(--yellow); color: var(--dark); }
+    .badge-green { background: #4caf50; color: white; }
+
+    .article-hero-text { position: relative; z-index: 1; }
+    .article-hero-text h1 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 800; color: var(--white); line-height: 1.4; margin-bottom: 1rem; }
+    .article-hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+    .author-chip { display: flex; align-items: center; gap: 0.4rem; }
+    .author-avatar { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, var(--sky), var(--yellow)); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; color: var(--dark); }
+
+    .article-hero-img { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+    .article-emolga { width: 180px; height: 180px; object-fit: contain; filter: drop-shadow(0 8px 30px rgba(91,200,245,0.7)) drop-shadow(0 0 16px rgba(245,216,0,0.4)); animation: float 5s ease-in-out infinite; }
+
+    .article-body { background: var(--white); border-radius: 12px; padding: 2rem; box-shadow: var(--card-shadow); }
+    .article-section { margin-bottom: 2.5rem; }
+    .article-section:last-child { margin-bottom: 0; }
+    .article-section h2 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--sky); display: flex; align-items: center; gap: 0.5rem; }
+    .article-section h2::before { content: ''; display: inline-block; width: 4px; height: 1.1em; background: linear-gradient(to bottom, var(--sky), var(--yellow)); border-radius: 2px; }
+    .article-section p { font-size: 0.88rem; line-height: 1.85; color: #3a4555; margin-bottom: 0.75rem; }
+
+    .pokemon-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+    .pokemon-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .pokemon-table thead th { background: var(--dark); color: var(--white); padding: 0.6rem 0.8rem; text-align: left; font-size: 0.72rem; letter-spacing: 0.08em; }
+    .pokemon-table tbody tr { border-bottom: 1px solid #eef2f7; }
+    .pokemon-table tbody tr:nth-child(even) { background: var(--gray-light); }
+    .pokemon-table tbody tr:hover { background: var(--sky-light); }
+    .pokemon-table td { padding: 0.65rem 0.8rem; vertical-align: top; line-height: 1.5; }
+    .pokemon-table td:first-child { font-weight: 700; white-space: nowrap; }
+    .moves-list { display: flex; flex-direction: column; gap: 0.2rem; }
+    .move-tag { display: inline-block; background: var(--gray-light); border: 1px solid #dde4ed; border-radius: 4px; padding: 0.1rem 0.45rem; font-size: 0.7rem; }
+
+    .pattern-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pattern-item { background: var(--gray-light); border-radius: 10px; padding: 1.1rem 1.2rem; border-left: 4px solid var(--sky); }
+    .pattern-item h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--sky-dark); }
+    .pattern-item p { font-size: 0.83rem; color: #3a4555; margin: 0; }
+
+    .summary-box { background: linear-gradient(135deg, var(--sky-light), var(--yellow-light)); border-radius: 10px; padding: 1.2rem 1.4rem; border-left: 4px solid var(--yellow); }
+    .summary-box p { margin: 0; font-size: 0.88rem; line-height: 1.85; }
+
+    @media (max-width: 700px) {
+      .article-hero { grid-template-columns: 1fr; }
+      .article-hero-img { display: none; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
+  <span><a href="#">Twitter</a> &nbsp;|&nbsp; <a href="#">YouTube</a> &nbsp;|&nbsp; <a href="#">お問い合わせ</a></span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
+      <div class="logo-text">
+        <span class="main">New Emolgame</span>
+        <span class="sub">ポケモン構築紹介メディア</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">トップ</a>
+      <a href="#" class="active">構築記事</a>
+      <a href="#">レギュレーション</a>
+      <a href="#">大会情報</a>
+      <a href="#">初心者向け</a>
+      <a href="#">エモンガ特集</a>
+    </nav>
+    <button class="header-search" aria-label="検索">🔍&nbsp; キーワード検索</button>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">トップ</a>
+  <span>›</span>
+  <a href="#">構築記事</a>
+  <span>›</span>
+  <span>エモンガ×ゴリランダーの電気草パ — レート2000到達記念構築</span>
+</nav>
+
+<div class="article-wrap">
+
+  <div class="article-hero">
+    <div class="article-hero-text">
+      <div class="hero-badges">
+        <span class="badge-pill badge-green">🌿 電気草パ</span>
+        <span class="badge-pill badge-sky">⚡ レギュレーションJ</span>
+        <span class="badge-pill badge-yellow">レート2000達成</span>
+      </div>
+      <h1>エモンガ×ゴリランダーの電気草パ — レート2000到達記念構築</h1>
+      <div class="article-hero-meta">
+        <div class="author-chip">
+          <div class="author-avatar">か</div>
+          <span>かみなり</span>
+        </div>
+        <span>2026.04.28</span>
+        <span>👁 4,320 views</span>
+      </div>
+    </div>
+    <div class="article-hero-img">
+      <img class="article-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <div class="article-section">
+      <h2>構築コンセプト</h2>
+      <p>エモンガとゴリランダーのタイプ補完を活かした「電気草パ」。ゴリランダーの特性「グラスメイカー」でグラスフィールドを展開し、草技を強化しながらエモンガの電気技で広範囲をカバーします。地面技をフィールドで軽減しつつ、電気・草の高い一貫性で相手の選出を絞らせる戦略です。シーズン中のランクマッチでレート2000という節目を達成できた記念の構築を全公開します。</p>
+    </div>
+
+    <div class="article-section">
+      <h2>構築メンバー紹介</h2>
+      <div class="pokemon-table-wrap">
+        <table class="pokemon-table">
+          <thead>
+            <tr>
+              <th>ポケモン</th>
+              <th>持ち物</th>
+              <th>特性</th>
+              <th>技構成</th>
+              <th>努力値</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>エモンガ</td>
+              <td>きあいのタスキ</td>
+              <td>ふゆう</td>
+              <td><div class="moves-list"><span class="move-tag">ほうでん</span><span class="move-tag">アクロバット</span><span class="move-tag">でんじは</span><span class="move-tag">まもる</span></div></td>
+              <td>S252 C252 H4</td>
+            </tr>
+            <tr>
+              <td>ゴリランダー</td>
+              <td>きせきのタネ</td>
+              <td>グラスメイカー</td>
+              <td><div class="moves-list"><span class="move-tag">グラスラィダー</span><span class="move-tag">ウッドハンマー</span><span class="move-tag">ねこだまし</span><span class="move-tag">まもる</span></div></td>
+              <td>A252 H148 B108</td>
+            </tr>
+            <tr>
+              <td>ランドロス（霊獣）</td>
+              <td>こだわりスカーフ</td>
+              <td>いかく</td>
+              <td><div class="moves-list"><span class="move-tag">じしん</span><span class="move-tag">いわなだれ</span><span class="move-tag">とんぼがえり</span><span class="move-tag">そらをとぶ</span></div></td>
+              <td>A252 S252 H4</td>
+            </tr>
+            <tr>
+              <td>ウーラオス（いちげき）</td>
+              <td>きあいのタスキ</td>
+              <td>ふかしのこぶし</td>
+              <td><div class="moves-list"><span class="move-tag">あんこくきょうだ</span><span class="move-tag">すいりゅうれんだ</span><span class="move-tag">インファイト</span><span class="move-tag">まもる</span></div></td>
+              <td>A252 S252 H4</td>
+            </tr>
+            <tr>
+              <td>ポリゴン2</td>
+              <td>しんかのきせき</td>
+              <td>ダウンロード</td>
+              <td><div class="moves-list"><span class="move-tag">トライアタック</span><span class="move-tag">イカサマ</span><span class="move-tag">じこさいせい</span><span class="move-tag">てだすけ</span></div></td>
+              <td>H252 B128 D128</td>
+            </tr>
+            <tr>
+              <td>コータス</td>
+              <td>たべのこし</td>
+              <td>ひでり</td>
+              <td><div class="moves-list"><span class="move-tag">だいもんじ</span><span class="move-tag">ふんか</span><span class="move-tag">てだすけ</span><span class="move-tag">まもる</span></div></td>
+              <td>H252 C164 D92</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <h2>主な立ち回り</h2>
+      <div class="pattern-list">
+        <div class="pattern-item">
+          <h3>パターン1：ゴリランダー+エモンガ グラスフィールド展開</h3>
+          <p>ゴリランダーがグラスメイカーでフィールドを展開しつつ、エモンガが「でんじは」でサポート。グラスフィールドにより地震のダメージが半減し、エモンガが相手の地面技を無効化する「ふゆう」と合わせて二重の安全地帯を構築。</p>
+        </div>
+        <div class="pattern-item">
+          <h3>パターン2：ポリゴン2+ゴリランダー 耐久展開</h3>
+          <p>ポリゴン2の「てだすけ」でゴリランダーの「グラスラィダー」を強化する型。しんかのきせきで耐久を確保したポリゴン2が盾になりつつ、ゴリランダーが強化された草技で相手を削る。</p>
+        </div>
+        <div class="pattern-item">
+          <h3>パターン3：ウーラオス+ランドロス 対面詰め</h3>
+          <p>序盤に相手の構築を把握してから後半に投入するコンビ。ランドロスの「いかく」で物理アタッカーを弱体化させ、ウーラオスが抜き確になった相手を一掃する強引な詰め展開。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <h2>まとめ・感想</h2>
+      <div class="summary-box">
+        <p>レート2000という目標を達成できたのは、グラスフィールドとエモンガの地面無効という組み合わせが環境に刺さったおかげです。ゴリランダーとエモンガの並びは対策されにくく、これからも磨き続けたい構築です。次の目標はレート2100！</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-wrap">
+        <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
+        <span class="footer-logo-text">New Emolgame</span>
+      </div>
+      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。ダブルバトルの最前線をお届けします。</p>
+    </div>
+    <div class="footer-col">
+      <h4>コンテンツ</h4>
+      <ul><li>構築記事</li><li>大会情報</li><li>育成論</li><li>初心者向け</li><li>エモンガ特集</li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>サイト情報</h4>
+      <ul><li>運営紹介</li><li>構築記事を投稿する</li><li>お問い合わせ</li><li>プライバシーポリシー</li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 New Emolgame — Pokémon and all related names are © Nintendo / Game Freak. This is a fan site. Sprites from <a href="https://pokeapi.co" style="color:var(--sky-light)">PokéAPI</a>.
+  </div>
+</footer>
+
+</body>
+</html>

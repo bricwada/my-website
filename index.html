@@ -122,7 +122,7 @@
     .section-head a { font-size: 0.75rem; color: var(--sky-dark); font-weight: 500; }
 
     /* ── FEATURED CARD ── */
-    .featured-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .featured-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; color: inherit; }
     .featured-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(91,200,245,0.28); }
     .featured-img { background: linear-gradient(135deg, #1a3a5e, #2a6098); min-height: 220px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .featured-img .badge { position: absolute; top: 0.75rem; left: 0.75rem; background: var(--accent); color: white; font-size: 0.62rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.1em; z-index: 1; }
@@ -150,7 +150,7 @@
 
     /* ── ARTICLES GRID ── */
     .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
-    .article-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    .article-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: block; color: inherit; }
     .article-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow); }
     .card-img { height: 140px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 
@@ -355,7 +355,7 @@
       <a href="#">すべて見る →</a>
     </div>
 
-    <div class="featured-card">
+    <a href="article-wcs2026.html" class="featured-card">
       <div class="featured-img" style="background: linear-gradient(135deg, #1a3a5e, #2a6098);">
         <span class="badge">🏆 WCS2026 予選</span>
         <!-- 公式アートワーク：少し大きめ・正面・ゆっくり浮遊 -->
@@ -379,7 +379,7 @@
           <span>👁 12,480</span>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 最新記事グリッド：各カードで異なるスプライトポーズ -->
     <div class="section-head" style="margin-top:2rem;">
@@ -390,7 +390,7 @@
     <div class="articles-grid">
 
       <!-- カード①：B&Wアニメーション GIF（動くドット絵） -->
-      <div class="article-card">
+      <a href="article-gorilla.html" class="article-card">
         <div class="card-img card-img-bg1">
           <span class="cat-badge badge-reg">Reg.J</span>
           <img
@@ -407,10 +407,10 @@
           </div>
           <div class="card-meta"><span>⚡ かみなり · 2026.04.28</span><span>👁 4,320</span></div>
         </div>
-      </div>
+      </a>
 
       <!-- カード②：通常正面スプライト（ドット絵・バウンス） -->
-      <div class="article-card">
+      <a href="article-trick-room.html" class="article-card">
         <div class="card-img card-img-bg2">
           <span class="cat-badge badge-team">構築</span>
           <img
@@ -427,10 +427,10 @@
           </div>
           <div class="card-meta"><span>⚡ emonga_game · 2026.04.22</span><span>👁 3,810</span></div>
         </div>
-      </div>
+      </a>
 
       <!-- カード③：背面スプライト（ドット絵・バウンス） -->
-      <div class="article-card">
+      <a href="article-pjcs2026.html" class="article-card">
         <div class="card-img card-img-bg3">
           <span class="cat-badge badge-event">大会</span>
           <img
@@ -447,10 +447,10 @@
           </div>
           <div class="card-meta"><span>編集部 · 2026.04.18</span><span>👁 8,950</span></div>
         </div>
-      </div>
+      </a>
 
       <!-- カード④：公式アートワーク（縮小・浮遊） -->
-      <div class="article-card">
+      <a href="article-training.html" class="article-card">
         <div class="card-img card-img-bg4">
           <span class="cat-badge badge-iku">育成論</span>
           <img
@@ -467,7 +467,7 @@
           </div>
           <div class="card-meta"><span>エモ博士 · 2026.04.10</span><span>👁 22,140</span></div>
         </div>
-      </div>
+      </a>
 
     </div>
   </main>
@@ -572,27 +572,32 @@
     {
       title: '【WCS2026予選通過】エモンガ×カイオーガの電気雨パで世界を目指した構築全公開',
       chips: ['エモンガ', 'カイオーガ', '電気雨パ'],
-      badge: 'WCS2026', badgeClass: 'badge-reg'
+      badge: 'WCS2026', badgeClass: 'badge-reg',
+      url: 'article-wcs2026.html'
     },
     {
       title: 'エモンガ×ゴリランダーの電気草パ — レート2000到達記念構築',
       chips: ['エモンガ', 'ゴリランダー', 'ランドロス'],
-      badge: 'Reg.J', badgeClass: 'badge-reg'
+      badge: 'Reg.J', badgeClass: 'badge-reg',
+      url: 'article-gorilla.html'
     },
     {
       title: '【てるチャレ優勝】エモンガ入りトリックルーム構築の全貌',
       chips: ['エモンガ', 'ミミッキュ', 'ドサイドン'],
-      badge: '構築', badgeClass: 'badge-team'
+      badge: '構築', badgeClass: 'badge-team',
+      url: 'article-trick-room.html'
     },
     {
       title: 'PJCS2026予選 上位使用構築まとめ — エモンガ採用率15%の衝撃',
       chips: ['上位まとめ', 'PJCS2026'],
-      badge: '大会', badgeClass: 'badge-event'
+      badge: '大会', badgeClass: 'badge-event',
+      url: 'article-pjcs2026.html'
     },
     {
       title: '【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン',
       chips: ['育成論', 'エモンガ', '初心者向け'],
-      badge: '育成論', badgeClass: 'badge-iku'
+      badge: '育成論', badgeClass: 'badge-iku',
+      url: 'article-training.html'
     }
   ];
 
@@ -627,7 +632,7 @@
       return;
     }
     results.innerHTML = matched.map(a => `
-      <div class="search-result-item">
+      <div class="search-result-item" data-url="${a.url}" style="cursor:pointer;">
         <span class="result-badge cat-badge ${a.badgeClass}">${a.badge}</span>
         <div>
           <div class="result-title">${a.title}</div>
@@ -635,6 +640,11 @@
         </div>
       </div>
     `).join('');
+    results.querySelectorAll('.search-result-item[data-url]').forEach(item => {
+      item.addEventListener('click', () => {
+        window.location.href = item.dataset.url;
+      });
+    });
   }
 
   document.getElementById('searchBtn').addEventListener('click', openSearch);

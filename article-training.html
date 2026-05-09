@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン | New Emolgame</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sky: #5bc8f5;
+      --sky-light: #b3e8fc;
+      --sky-dark: #2aa8e0;
+      --yellow: #f5d800;
+      --yellow-light: #fff9c4;
+      --dark: #1a1f2e;
+      --dark-mid: #2c3347;
+      --white: #ffffff;
+      --gray-light: #f0f4f8;
+      --gray: #8a9ab0;
+      --text: #1a1f2e;
+      --accent: #e85d2f;
+      --card-shadow: 0 4px 20px rgba(91,200,245,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--gray-light); color: var(--text); font-size: 15px; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    .topbar { background: var(--dark); color: rgba(255,255,255,0.55); font-size: 0.7rem; padding: 0.35rem 1.5rem; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.08em; }
+    .topbar a { color: var(--sky-light); }
+    header { background: var(--white); border-bottom: 3px solid var(--sky); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0.55rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-sprite { width: 44px; height: 44px; image-rendering: pixelated; object-fit: contain; filter: drop-shadow(0 1px 4px rgba(91,200,245,0.4)); }
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-text .main { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; background: linear-gradient(135deg, var(--sky-dark), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo-text .sub { font-size: 0.62rem; color: var(--gray); letter-spacing: 0.15em; }
+    .header-nav { display: flex; gap: 0.2rem; }
+    .header-nav a { padding: 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 500; color: var(--dark-mid); border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .header-nav a:hover { background: var(--sky-light); color: var(--sky-dark); }
+    .header-nav a.active { background: var(--sky); color: var(--white); }
+    .header-search { display: flex; align-items: center; gap: 0.5rem; background: var(--gray-light); border: 1.5px solid #dde4ed; border-radius: 20px; padding: 0.38rem 1rem; font-size: 0.8rem; color: var(--gray); cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .header-search:hover { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(91,200,245,0.15); }
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); margin-top: 3rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+    .footer-sprite { width: 32px; height: 32px; image-rendering: pixelated; object-fit: contain; filter: drop-shadow(0 0 6px rgba(91,200,245,0.5)); animation: bounce 4s ease-in-out infinite; }
+    .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.08em; color: var(--sky-light); }
+    footer p { font-size: 0.78rem; line-height: 1.8; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { font-size: 0.75rem; padding: 0.3rem 0; cursor: pointer; transition: color 0.2s; }
+    .footer-col ul li:hover { color: var(--sky-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 1rem; font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-14px) rotate(2deg)} }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+    .breadcrumb { max-width: 860px; margin: 0 auto; padding: 0.85rem 1.5rem; font-size: 0.75rem; color: var(--gray); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sky-dark); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--gray); }
+    .article-wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+
+    .article-hero { background: linear-gradient(135deg, #3a1a6a 0%, #5a2a8a 40%, #4a1a7a 70%, #6a2a9a 100%); border-radius: 16px; overflow: hidden; padding: 2.5rem 2rem; display: grid; grid-template-columns: 1fr 200px; gap: 2rem; align-items: center; margin-bottom: 2rem; position: relative; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(1.5px 1.5px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 60% 15%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.3) 0%, transparent 100%); pointer-events: none; }
+
+    .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; position: relative; z-index: 1; }
+    .badge-pill { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; letter-spacing: 0.1em; }
+    .badge-purple { background: #8a4fca; color: white; }
+    .badge-sky { background: var(--sky); color: var(--dark); }
+    .badge-yellow { background: var(--yellow); color: var(--dark); }
+
+    .article-hero-text { position: relative; z-index: 1; }
+    .article-hero-text h1 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 800; color: var(--white); line-height: 1.4; margin-bottom: 1rem; }
+    .article-hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+    .author-chip { display: flex; align-items: center; gap: 0.4rem; }
+    .author-avatar { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, var(--sky), var(--yellow)); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; color: var(--dark); }
+    .article-hero-img { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+    .article-emolga { width: 180px; height: 180px; object-fit: contain; filter: drop-shadow(0 8px 30px rgba(91,200,245,0.7)) drop-shadow(0 0 16px rgba(245,216,0,0.4)); animation: float 5s ease-in-out infinite; }
+
+    .article-body { background: var(--white); border-radius: 12px; padding: 2rem; box-shadow: var(--card-shadow); }
+    .article-section { margin-bottom: 2.5rem; }
+    .article-section:last-child { margin-bottom: 0; }
+    .article-section h2 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--sky); display: flex; align-items: center; gap: 0.5rem; }
+    .article-section h2::before { content: ''; display: inline-block; width: 4px; height: 1.1em; background: linear-gradient(to bottom, var(--sky), var(--yellow)); border-radius: 2px; }
+    .article-section p { font-size: 0.88rem; line-height: 1.85; color: #3a4555; margin-bottom: 0.75rem; }
+    .article-section h3 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.6rem; color: var(--dark); }
+
+    /* Base Stats */
+    .base-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1.5rem; }
+    .stat-item { background: var(--gray-light); border-radius: 8px; padding: 0.7rem; text-align: center; }
+    .stat-item .stat-name { font-size: 0.65rem; color: var(--gray); margin-bottom: 0.3rem; }
+    .stat-item .stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--sky-dark); line-height: 1; }
+    .stat-item.stat-hp .stat-val { color: #e55; }
+    .stat-item.stat-atk .stat-val { color: #e85d2f; }
+    .stat-item.stat-def .stat-val { color: #f5d800; }
+    .stat-item.stat-spa .stat-val { color: var(--sky-dark); }
+    .stat-item.stat-spd .stat-val { color: #4caf50; }
+    .stat-item.stat-spe .stat-val { color: #8a4fca; }
+
+    /* EV Build Table */
+    .ev-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 1rem; }
+    .ev-table thead th { background: var(--dark); color: var(--white); padding: 0.6rem 0.85rem; text-align: left; font-size: 0.72rem; letter-spacing: 0.08em; }
+    .ev-table tbody tr { border-bottom: 1px solid #eef2f7; }
+    .ev-table tbody tr:nth-child(even) { background: var(--gray-light); }
+    .ev-table tbody tr:hover { background: var(--sky-light); }
+    .ev-table td { padding: 0.65rem 0.85rem; vertical-align: middle; }
+    .ev-table td:first-child { font-weight: 700; }
+    .build-tag { display: inline-block; background: var(--sky-light); color: var(--sky-dark); border-radius: 4px; padding: 0.12rem 0.5rem; font-size: 0.7rem; font-weight: 700; }
+    .build-tag.recommend { background: var(--yellow-light); color: var(--dark); border: 1px solid var(--yellow); }
+
+    /* Item List */
+    .item-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .item-row { background: var(--gray-light); border-radius: 8px; padding: 0.85rem 1rem; display: flex; align-items: flex-start; gap: 0.8rem; }
+    .item-name { font-weight: 700; font-size: 0.85rem; white-space: nowrap; min-width: 120px; }
+    .item-desc { font-size: 0.8rem; color: #3a4555; line-height: 1.6; }
+    .item-row.best { border-left: 3px solid var(--yellow); }
+
+    /* Move Table */
+    .move-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .move-table thead th { background: var(--dark-mid); color: var(--white); padding: 0.55rem 0.85rem; text-align: left; font-size: 0.72rem; }
+    .move-table tbody tr { border-bottom: 1px solid #eef2f7; }
+    .move-table tbody tr:nth-child(even) { background: var(--gray-light); }
+    .move-table td { padding: 0.65rem 0.85rem; vertical-align: middle; }
+    .move-table td:first-child { font-weight: 700; white-space: nowrap; }
+    .type-badge { display: inline-block; border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.68rem; font-weight: 700; color: white; }
+    .type-electric { background: #F8D030; color: #333; }
+    .type-flying { background: #A890F0; }
+    .type-normal { background: #A8A878; }
+    .type-status { background: #705898; }
+    .priority-cell { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; text-align: center; }
+
+    /* Type Chart */
+    .type-chart { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.5rem; }
+    .type-cell { border-radius: 6px; padding: 0.5rem 0.6rem; text-align: center; font-size: 0.75rem; }
+    .type-cell .type-name { font-weight: 700; margin-bottom: 0.2rem; font-size: 0.7rem; }
+    .type-cell .multiplier { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; line-height: 1; }
+    .weak4  { background: #ffcccc; color: #c00; }
+    .weak2  { background: #ffe0cc; color: #c44; }
+    .immune { background: #c8f0c8; color: #2a7a2a; }
+    .half   { background: #cce8ff; color: #0066aa; }
+    .normal-res { background: var(--gray-light); color: var(--gray); }
+
+    .summary-box { background: linear-gradient(135deg, var(--sky-light), var(--yellow-light)); border-radius: 10px; padding: 1.2rem 1.4rem; border-left: 4px solid var(--yellow); }
+    .summary-box p { margin: 0; font-size: 0.88rem; line-height: 1.85; }
+
+    @media (max-width: 700px) {
+      .article-hero { grid-template-columns: 1fr; }
+      .article-hero-img { display: none; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+      .base-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
+  <span><a href="#">Twitter</a> &nbsp;|&nbsp; <a href="#">YouTube</a> &nbsp;|&nbsp; <a href="#">お問い合わせ</a></span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
+      <div class="logo-text">
+        <span class="main">New Emolgame</span>
+        <span class="sub">ポケモン構築紹介メディア</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">トップ</a>
+      <a href="#">構築記事</a>
+      <a href="#">レギュレーション</a>
+      <a href="#">大会情報</a>
+      <a href="#" class="active">初心者向け</a>
+      <a href="#">エモンガ特集</a>
+    </nav>
+    <button class="header-search" aria-label="検索">🔍&nbsp; キーワード検索</button>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">トップ</a>
+  <span>›</span>
+  <a href="#">育成論</a>
+  <span>›</span>
+  <span>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</span>
+</nav>
+
+<div class="article-wrap">
+
+  <div class="article-hero">
+    <div class="article-hero-text">
+      <div class="hero-badges">
+        <span class="badge-pill badge-purple">永久保存版</span>
+        <span class="badge-pill badge-yellow">育成論</span>
+        <span class="badge-pill badge-sky">初心者向け</span>
+      </div>
+      <h1>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</h1>
+      <div class="article-hero-meta">
+        <div class="author-chip">
+          <div class="author-avatar">博</div>
+          <span>エモ博士</span>
+        </div>
+        <span>2026.04.10</span>
+        <span>👁 22,140 views</span>
+      </div>
+    </div>
+    <div class="article-hero-img">
+      <img class="article-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <div class="article-section">
+      <h2>エモンガ基本データ</h2>
+      <p>エモンガ（No.587）は電気・飛行タイプの二足歩行リス型ポケモン。特性「ふゆう」により地面技が完全無効となるのが最大の特長です。種族値合計472と控えめですが、素早さ103が光り、サポート役として幅広い構築に組み込めます。</p>
+      <div class="base-stats">
+        <div class="stat-item stat-hp"><div class="stat-name">HP</div><div class="stat-val">55</div></div>
+        <div class="stat-item stat-atk"><div class="stat-name">こうげき</div><div class="stat-val">75</div></div>
+        <div class="stat-item stat-def"><div class="stat-name">ぼうぎょ</div><div class="stat-val">60</div></div>
+        <div class="stat-item stat-spa"><div class="stat-name">とくこう</div><div class="stat-val">75</div></div>
+        <div class="stat-item stat-spd"><div class="stat-name">とくぼう</div><div class="stat-val">60</div></div>
+        <div class="stat-item stat-spe"><div class="stat-name">すばやさ</div><div class="stat-val">103</div></div>
+      </div>
+      <p><strong>特性：</strong>ふゆう（地面タイプの技・じならし・どろかけを無効化）/ モーター（使わない）</p>
+      <p><strong>タイプ：</strong>でんき・ひこう</p>
+    </div>
+
+    <div class="article-section">
+      <h2>努力値配分 全5パターン</h2>
+      <p>エモンガの役割に応じた努力値配分を5パターン紹介します。</p>
+      <div style="overflow-x:auto;">
+        <table class="ev-table">
+          <thead>
+            <tr>
+              <th>パターン名</th>
+              <th>H</th>
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>D</th>
+              <th>S</th>
+              <th>推奨度</th>
+              <th>用途</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>最速アタッカー</td>
+              <td>4</td>
+              <td>0</td>
+              <td>0</td>
+              <td>252</td>
+              <td>0</td>
+              <td>252</td>
+              <td><span class="build-tag recommend">★★★</span></td>
+              <td>最速S・電気技火力最大</td>
+            </tr>
+            <tr>
+              <td>サポート特化</td>
+              <td>252</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>4</td>
+              <td>252</td>
+              <td><span class="build-tag recommend">★★★</span></td>
+              <td>でんじは・アンコール役</td>
+            </tr>
+            <tr>
+              <td>耐久寄りサポート</td>
+              <td>180</td>
+              <td>0</td>
+              <td>76</td>
+              <td>0</td>
+              <td>0</td>
+              <td>252</td>
+              <td><span class="build-tag">★★☆</span></td>
+              <td>きあいのタスキ不要型</td>
+            </tr>
+            <tr>
+              <td>物理アタッカー</td>
+              <td>4</td>
+              <td>252</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>252</td>
+              <td><span class="build-tag">★★☆</span></td>
+              <td>アクロバット・とんぼがえり</td>
+            </tr>
+            <tr>
+              <td>準速耐久型</td>
+              <td>252</td>
+              <td>0</td>
+              <td>128</td>
+              <td>0</td>
+              <td>128</td>
+              <td>4</td>
+              <td><span class="build-tag">★☆☆</span></td>
+              <td>詰め構築・壁役</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <h2>持ち物候補</h2>
+      <div class="item-list">
+        <div class="item-row best">
+          <div class="item-name">きあいのタスキ ★最推奨</div>
+          <div class="item-desc">HP1で耐えて行動できる。エモンガの低耐久を補い、確実に1回は動ける保険。サポート型・アタッカー型どちらにも採用できる万能アイテム。</div>
+        </div>
+        <div class="item-row">
+          <div class="item-name">でんきだま</div>
+          <div class="item-desc">「アクロバット」との組み合わせが目的。使用後に威力が2倍になるアクロバットが強力で、物理型エモンガの選択肢。ただし最初のターンは持っておく必要がある。</div>
+        </div>
+        <div class="item-row">
+          <div class="item-name">こだわりスカーフ</div>
+          <div class="item-desc">素早さを1.5倍に強化。最速エモンガのS103を更に伸ばし、環境の速いポケモンを上から叩ける。ただし技が固定されるデメリットがある。</div>
+        </div>
+        <div class="item-row">
+          <div class="item-name">いのちのたま</div>
+          <div class="item-desc">攻撃技の威力を1.3倍に強化。アタッカー型エモンガの選択肢で、電気技の火力を底上げする。HPが削れるデメリットをタスキと比較して採用を検討。</div>
+        </div>
+        <div class="item-row">
+          <div class="item-name">オボンのみ</div>
+          <div class="item-desc">HPが半分以下になると回復するきのみ。タスキ不採用時の耐久補助として機能し、複数ターン生き残ることが重要なサポート型に向く。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <h2>技構成の全パターン</h2>
+      <h3>メイン技（電気・飛行）</h3>
+      <table class="move-table">
+        <thead>
+          <tr>
+            <th>技名</th>
+            <th>タイプ</th>
+            <th>分類</th>
+            <th>威力</th>
+            <th>命中</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ほうでん</td>
+            <td><span class="type-badge type-electric">でんき</span></td>
+            <td>特殊</td>
+            <td>80</td>
+            <td>100</td>
+            <td>全体攻撃・30%麻痺。ダブルバトルで両サイドに届く主力技。</td>
+          </tr>
+          <tr>
+            <td>１０まんボルト</td>
+            <td><span class="type-badge type-electric">でんき</span></td>
+            <td>特殊</td>
+            <td>90</td>
+            <td>100</td>
+            <td>単体電気技の主力。高威力・安定命中で使いやすい。</td>
+          </tr>
+          <tr>
+            <td>かみなり</td>
+            <td><span class="type-badge type-electric">でんき</span></td>
+            <td>特殊</td>
+            <td>110</td>
+            <td>70</td>
+            <td>雨天候下で命中100%。カイオーガとのシナジーで採用価値大。</td>
+          </tr>
+          <tr>
+            <td>アクロバット</td>
+            <td><span class="type-badge" style="background:#A890F0">ひこう</span></td>
+            <td>物理</td>
+            <td>55/110</td>
+            <td>100</td>
+            <td>持ち物なし時に威力2倍。でんきだまを使用した後に威力110に。</td>
+          </tr>
+          <tr>
+            <td>とんぼがえり</td>
+            <td><span class="type-badge" style="background:#A890F0">ひこう</span></td>
+            <td>物理</td>
+            <td>70</td>
+            <td>100</td>
+            <td>打った後に交代できる。スイッチ戦術と組み合わせて使う。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>補助技</h3>
+      <table class="move-table">
+        <thead>
+          <tr>
+            <th>技名</th>
+            <th>タイプ</th>
+            <th>分類</th>
+            <th>優先度</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>でんじは</td>
+            <td><span class="type-badge type-electric">でんき</span></td>
+            <td>変化</td>
+            <td class="priority-cell">0</td>
+            <td>相手を麻痺状態にする。素早さ1/2化で速い相手を抑制できる強力なサポート。</td>
+          </tr>
+          <tr>
+            <td>アンコール</td>
+            <td><span class="type-badge type-normal">ノーマル</span></td>
+            <td>変化</td>
+            <td class="priority-cell">0</td>
+            <td>相手の直前の技を3ターン強制継続。積み技やトリル展開を封じる技。</td>
+          </tr>
+          <tr>
+            <td>まもる</td>
+            <td><span class="type-badge type-normal">ノーマル</span></td>
+            <td>変化</td>
+            <td class="priority-cell">+4</td>
+            <td>このターン全ての技を防ぐ。ダブルバトルで必須の生存・調整技。</td>
+          </tr>
+          <tr>
+            <td>こごえるかぜ</td>
+            <td><span class="type-badge" style="background:#98D8D8;color:#333">こおり</span></td>
+            <td>特殊</td>
+            <td class="priority-cell">0</td>
+            <td>相手全体の素早さを1段階下げる。スピードコントロールに優れる全体技。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="article-section">
+      <h2>タイプ相性一覧</h2>
+      <p>でんき・ひこうの複合タイプによるタイプ相性です。「ふゆう」により地面技も無効になる点に注意。</p>
+      <div class="type-chart">
+        <div class="type-cell weak4"><div class="type-name">いわ</div><div class="multiplier">×4</div></div>
+        <div class="type-cell weak2"><div class="type-name">こおり</div><div class="multiplier">×2</div></div>
+        <div class="type-cell immune"><div class="type-name">じめん</div><div class="multiplier">×0</div></div>
+        <div class="type-cell immune"><div class="type-name">でんき</div><div class="multiplier">×0</div></div>
+        <div class="type-cell half"><div class="type-name">くさ</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name">かくとう</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name">むし</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name">はがね</div><div class="multiplier">×½</div></div>
+        <div class="type-cell normal-res"><div class="type-name">その他</div><div class="multiplier">×1</div></div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--gray)">※いわタイプに4倍弱点を持つのが最大の弱点。いわなだれ・ストーンエッジには特に注意が必要です。</p>
+    </div>
+
+    <div class="article-section">
+      <h2>まとめ・感想</h2>
+      <div class="summary-box">
+        <p>エモンガは種族値こそ低いですが、特性「ふゆう」と素早さ103、豊富な補助技を活かせば十分に戦力になるポケモンです。きあいのタスキを持たせた最速サポート型が最もオーソドックスで扱いやすい育成法です。ぜひあなただけのエモンガを育ててみてください！</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-wrap">
+        <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
+        <span class="footer-logo-text">New Emolgame</span>
+      </div>
+      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。ダブルバトルの最前線をお届けします。</p>
+    </div>
+    <div class="footer-col">
+      <h4>コンテンツ</h4>
+      <ul><li>構築記事</li><li>大会情報</li><li>育成論</li><li>初心者向け</li><li>エモンガ特集</li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>サイト情報</h4>
+      <ul><li>運営紹介</li><li>構築記事を投稿する</li><li>お問い合わせ</li><li>プライバシーポリシー</li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 New Emolgame — Pokémon and all related names are © Nintendo / Game Freak. This is a fan site. Sprites from <a href="https://pokeapi.co" style="color:var(--sky-light)">PokéAPI</a>.
+  </div>
+</footer>
+
+</body>
+</html>
