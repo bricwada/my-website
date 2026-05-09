@@ -6,31 +6,59 @@
   <title>大会情報 | New Emolgame</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .tournament-card { background:var(--white); border-radius:12px; padding:1.5rem; box-shadow:0 2px 10px rgba(0,0,0,0.06); margin-bottom:1rem; display:grid; grid-template-columns:auto 1fr auto; gap:1rem; align-items:center; transition:transform 0.2s,box-shadow 0.2s; cursor:pointer; }
-    .tournament-card:hover { transform:translateY(-2px); box-shadow:var(--card-shadow); }
-    .t-date { text-align:center; background:var(--dark); color:var(--white); border-radius:10px; padding:0.6rem 0.8rem; min-width:60px; }
-    .t-date .month { font-size:0.65rem; letter-spacing:0.1em; opacity:0.7; }
-    .t-date .day   { font-family:'Bebas Neue',sans-serif; font-size:2rem; line-height:1; color:var(--yellow); }
-    .t-info h3 { font-family:'M PLUS Rounded 1c',sans-serif; font-size:1rem; font-weight:800; margin-bottom:0.3rem; }
-    .t-info p  { font-size:0.8rem; color:var(--gray); }
-    .t-info .t-tags { display:flex; gap:0.3rem; flex-wrap:wrap; margin-top:0.4rem; }
-    .t-badge { font-size:0.62rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:4px; }
-    .t-badge.wcs     { background:#1a1f2e; color:var(--yellow); }
-    .t-badge.official{ background:var(--sky); color:white; }
-    .t-badge.grass   { background:var(--green); color:white; }
-    .t-badge.online  { background:var(--purple); color:white; }
-    .t-result { text-align:right; font-size:0.75rem; }
-    .t-result .result-label { color:var(--gray); margin-bottom:0.2rem; }
-    .t-result .result-val   { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--sky-dark); line-height:1; }
-    .result-win { color:var(--accent) !important; }
-    .upcoming-badge { background:var(--accent); color:white; font-size:0.62rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:4px; display:inline-block; margin-bottom:0.3rem; }
+    .tournament-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tournament-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow); }
+    .tournament-card a.card-link {
+      display: contents;
+      color: inherit;
+      text-decoration: none;
+    }
+    .t-date { text-align: center; background: var(--dark); color: var(--white); border-radius: 10px; padding: 0.6rem 0.8rem; min-width: 64px; flex-shrink: 0; }
+    .t-date .month { font-size: 0.62rem; letter-spacing: 0.1em; opacity: 0.7; text-transform: uppercase; }
+    .t-date .day   { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; color: var(--yellow); }
+    .t-info h3 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .t-info h3 a { color: var(--text); text-decoration: none; }
+    .t-info h3 a:hover { color: var(--sky-dark); text-decoration: underline; }
+    .t-info p  { font-size: 0.8rem; color: var(--gray); }
+    .t-info .t-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .t-badge { font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; }
+    .t-badge.official { background: var(--sky); color: white; }
+    .t-badge.grassroots { background: #4caf7d; color: white; }
+    .t-badge.online  { background: #7c6af7; color: white; }
+    .t-badge.offline { background: var(--accent); color: white; }
+    .t-badge.ongoing { background: var(--yellow); color: var(--dark); }
+    .t-result { text-align: right; font-size: 0.75rem; min-width: 70px; }
+    .t-result .result-label { color: var(--gray); margin-bottom: 0.2rem; }
+    .t-result .result-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--sky-dark); line-height: 1; }
+    .t-result a { color: inherit; text-decoration: none; }
+    .t-result a:hover { text-decoration: underline; }
+    .result-win { color: var(--accent) !important; }
+    .upcoming-badge { background: var(--accent); color: white; font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.3rem; }
+    .ongoing-badge  { background: var(--yellow); color: var(--dark); font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.3rem; }
+    .source-note { font-size: 0.72rem; color: var(--gray); margin-top: 0.25rem; }
+    .source-note a { color: var(--sky-dark); }
+    @media (max-width: 600px) {
+      .tournament-card { grid-template-columns: auto 1fr; }
+      .t-result { display: none; }
+    }
   </style>
 </head>
 <body>
 
 <div class="topbar">
-  <span>⚡ ポケモン構築紹介専門メディア</span>
-  <span><a href="https://twitter.com/newemolgame" target="_blank">Twitter @newemolgame</a></span>
+  <span>⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
+  <span><a href="https://twitter.com/newemolgame" target="_blank" rel="noopener noreferrer">Twitter</a> &nbsp;|&nbsp; <a href="#">お問い合わせ</a></span>
 </div>
 
 <header>
@@ -44,7 +72,7 @@
     </a>
     <nav class="header-nav">
       <a href="index.html">トップ</a>
-      <a href="builds.html">構築紹介</a>
+      <a href="builds.html">構築記事</a>
       <a href="regulation.html">レギュレーション</a>
       <a href="tournament.html" class="active">大会情報</a>
       <a href="beginner.html">初心者向け</a>
@@ -59,7 +87,7 @@
     <div class="page-hero-text">
       <div class="breadcrumb">トップ &gt; 大会情報</div>
       <h1>🏆 大会情報</h1>
-      <p>WCS2026・公式大会・草の根大会の結果・スケジュールをまとめています！</p>
+      <p>公式大会・草の根大会の結果・スケジュールをまとめています。大会名をクリックすると詳細ページへ移動します。</p>
     </div>
   </div>
 </div>
@@ -67,114 +95,159 @@
 <div class="category-bar">
   <div class="category-inner">
     <div class="cat-tab active" data-filter="all">すべて</div>
-    <div class="cat-tab" data-filter="wcs">WCS2026</div>
     <div class="cat-tab" data-filter="official">公式大会</div>
     <div class="cat-tab" data-filter="grassroots">草の根大会</div>
     <div class="cat-tab" data-filter="online">オンライン</div>
+    <div class="cat-tab" data-filter="offline">オフライン</div>
   </div>
 </div>
 
 <div class="main-wrap">
   <main>
+
+    <!-- ── 開催中・直近 ── -->
     <div class="section-head">
-      <h2>📅 今後の大会スケジュール</h2>
+      <h2>📅 開催中・直近の大会</h2>
     </div>
 
     <div class="info-box yellow">
-      🏆 <strong>WCS2026はロンドンで開催！</strong> エモンガ使いたちの活躍に注目！ 最新情報は<a href="https://twitter.com/newemolgame" target="_blank" style="color:var(--sky-dark);font-weight:600;">Twitter @newemolgame</a>で速報します。
+      大会情報は <a href="https://liberty-note.com/double-battle-event-calendar/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);font-weight:600;">Liberty Note — ダブルバトルイベントカレンダー</a> を参照しています。
     </div>
 
-    <div class="tournament-card" data-tag="wcs">
-      <div class="t-date"><div class="month">MAY</div><div class="day">10</div></div>
-      <div class="t-info">
-        <span class="upcoming-badge">🔴 UPCOMING</span>
-        <h3>WCS2026 World Championships — Day 1</h3>
-        <p>📍 ロンドン ExCeL / 🌍 世界大会</p>
-        <div class="t-tags"><span class="t-badge wcs">WCS2026</span><span class="t-badge official">公式</span></div>
-      </div>
-      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">1,024</div></div>
-    </div>
-
+    <!-- てるチャレDaily -->
     <div class="tournament-card" data-tag="grassroots online">
-      <div class="t-date"><div class="month">MAY</div><div class="day">17</div></div>
+      <div class="t-date"><div class="month">APR</div><div class="day">05</div></div>
       <div class="t-info">
-        <span class="upcoming-badge">🔴 UPCOMING</span>
-        <h3>てるチャレ #42</h3>
-        <p>📍 オンライン / 主催：てるてるチーム</p>
-        <div class="t-tags"><span class="t-badge grass">草の根</span><span class="t-badge online">オンライン</span></div>
+        <span class="ongoing-badge">🟢 定期開催中</span>
+        <h3><a href="https://liberty-note.com/2026/04/05/terurun-challenge-daily-announce/" target="_blank" rel="noopener noreferrer">てるチャレDaily</a></h3>
+        <p>📍 オンライン / 主催：てるてるチーム / レギュレーションM-A</p>
+        <div class="t-tags">
+          <span class="t-badge grassroots">草の根</span>
+          <span class="t-badge online">オンライン</span>
+          <span class="t-badge ongoing">定期開催</span>
+        </div>
+        <div class="source-note">詳細: <a href="https://liberty-note.com/2026/04/05/terurun-challenge-daily-announce/" target="_blank" rel="noopener noreferrer">liberty-note.com</a></div>
       </div>
-      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">128</div></div>
+      <div class="t-result"><div class="result-label">形式</div><div class="result-val">Daily</div></div>
     </div>
 
-    <div class="tournament-card" data-tag="official">
-      <div class="t-date"><div class="month">MAY</div><div class="day">24</div></div>
-      <div class="t-info">
-        <span class="upcoming-badge">🔴 UPCOMING</span>
-        <h3>PJCS2026 本戦</h3>
-        <p>📍 千葉・幕張メッセ / 🇯🇵 日本公式大会</p>
-        <div class="t-tags"><span class="t-badge official">公式</span></div>
-      </div>
-      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">512</div></div>
-    </div>
-
+    <!-- ── 最近の結果 ── -->
     <div class="section-head" style="margin-top:2rem;">
-      <h2>📊 過去の大会結果</h2>
+      <h2>📊 最近の大会結果</h2>
     </div>
 
-    <div class="tournament-card" data-tag="wcs official">
-      <div class="t-date"><div class="month">APR</div><div class="day">20</div></div>
+    <!-- グローバルチャレンジ2026 -->
+    <div class="tournament-card" data-tag="official online">
+      <div class="t-date"><div class="month">MAY</div><div class="day">05</div></div>
       <div class="t-info">
-        <h3>PJCS2026 予選</h3>
-        <p>📍 オンライン / エモンガ採用率15%で話題に</p>
-        <div class="t-tags"><span class="t-badge wcs">WCS2026</span><span class="t-badge official">公式</span></div>
+        <h3><a href="https://liberty-note.com/2026/05/05/global-challenge-2026-top1000/" target="_blank" rel="noopener noreferrer">グローバルチャレンジ2026</a></h3>
+        <p>📍 オンライン（Pokémon Champions） / レギュレーションM-A</p>
+        <p style="margin-top:0.3rem;">🥇 優勝：Federico Camporesi（レート1893）　🥈 準優勝：Daniel（1877）　🥉 3位：すいか（1874）</p>
+        <div class="t-tags">
+          <span class="t-badge official">公式</span>
+          <span class="t-badge online">オンライン</span>
+        </div>
+        <div class="source-note">結果詳細: <a href="https://liberty-note.com/2026/05/05/global-challenge-2026-top1000/" target="_blank" rel="noopener noreferrer">liberty-note.com — TOP1000まとめ</a></div>
       </div>
-      <div class="t-result"><div class="result-label">結果記事</div><div class="result-val result-win"><a href="builds.html" style="color:inherit;">→</a></div></div>
+      <div class="t-result"><div class="result-label">TOP</div><div class="result-val result-win"><a href="https://liberty-note.com/2026/05/05/global-challenge-2026-top1000/" target="_blank" rel="noopener noreferrer">→</a></div></div>
     </div>
 
+    <!-- てるチャレChampions #1 Offline -->
+    <div class="tournament-card" data-tag="grassroots offline">
+      <div class="t-date"><div class="month">APR</div><div class="day">25</div></div>
+      <div class="t-info">
+        <h3><a href="https://liberty-note.com/2026/03/17/terurun-challenge-champions-1-offline/" target="_blank" rel="noopener noreferrer">てるチャレChampions #1 Offline</a></h3>
+        <p>📍 足立区勤労福祉会館 第一ホール（綾瀬駅徒歩5分） / レギュレーションM-A</p>
+        <p style="margin-top:0.3rem;">参加者：186名（一般146名・高校生以下30名・親子10名） / スイスドロー7回戦→シングルエリミネーション</p>
+        <div class="t-tags">
+          <span class="t-badge grassroots">草の根</span>
+          <span class="t-badge offline">オフライン</span>
+        </div>
+        <div class="source-note">大会詳細: <a href="https://liberty-note.com/2026/03/17/terurun-challenge-champions-1-offline/" target="_blank" rel="noopener noreferrer">liberty-note.com</a></div>
+      </div>
+      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">186</div></div>
+    </div>
+
+    <!-- てるチャレChampions #0 Online -->
     <div class="tournament-card" data-tag="grassroots online">
       <div class="t-date"><div class="month">APR</div><div class="day">12</div></div>
       <div class="t-info">
-        <h3>てるチャレ #41 — エモンガ軸が優勝！</h3>
-        <p>📍 オンライン / 優勝構築はトリックルームエモンガ</p>
-        <div class="t-tags"><span class="t-badge grass">草の根</span><span class="t-badge online">オンライン</span></div>
+        <h3><a href="https://liberty-note.com/2026/04/14/terurun-challenge-champions-0-online-result/" target="_blank" rel="noopener noreferrer">てるチャレChampions #0 Online</a></h3>
+        <p>📍 オンライン / レギュレーションM-A / スイスドローBO1→決勝BO3</p>
+        <p style="margin-top:0.3rem;">🥇 優勝：kakunaka（@kakunaka_VGC）　🥈 準優勝：Uch　🥉 3位：キム・Multi boy</p>
+        <p style="margin-top:0.2rem;">使用率1位：ガブリアス(56.6%) 2位：オオニューラ(52.3%) 3位：ガオガエン(49.8%)</p>
+        <div class="t-tags">
+          <span class="t-badge grassroots">草の根</span>
+          <span class="t-badge online">オンライン</span>
+        </div>
+        <div class="source-note">結果詳細: <a href="https://liberty-note.com/2026/04/14/terurun-challenge-champions-0-online-result/" target="_blank" rel="noopener noreferrer">liberty-note.com</a> / 予選振り返り: <a href="https://liberty-note.com/2026/04/19/teruchalle0-osetusetu/" target="_blank" rel="noopener noreferrer">こちら</a></div>
       </div>
-      <div class="t-result"><div class="result-label">構築記事</div><div class="result-val result-win"><a href="builds.html" style="color:inherit;">→</a></div></div>
+      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">272</div></div>
     </div>
 
-    <div class="tournament-card" data-tag="official">
-      <div class="t-date"><div class="month">MAR</div><div class="day">15</div></div>
+    <!-- ウォームアップチャレンジ -->
+    <div class="tournament-card" data-tag="official online">
+      <div class="t-date"><div class="month">APR</div><div class="day">13</div></div>
       <div class="t-info">
-        <h3>ジャパンチャンピオンシップス2026 予選B</h3>
-        <p>📍 オンライン / WCS出場権2枠確定</p>
-        <div class="t-tags"><span class="t-badge official">公式</span></div>
+        <h3><a href="https://liberty-note.com/2026/04/13/warm-up-challenge-top100/" target="_blank" rel="noopener noreferrer">ウォームアップチャレンジ</a></h3>
+        <p>📍 オンライン（Pokémon Champions） / レギュレーションM-A</p>
+        <div class="t-tags">
+          <span class="t-badge official">公式</span>
+          <span class="t-badge online">オンライン</span>
+        </div>
+        <div class="source-note">TOP100まとめ: <a href="https://liberty-note.com/2026/04/13/warm-up-challenge-top100/" target="_blank" rel="noopener noreferrer">liberty-note.com</a></div>
       </div>
-      <div class="t-result"><div class="result-label">参加者</div><div class="result-val">356</div></div>
+      <div class="t-result"><div class="result-label">TOP</div><div class="result-val result-win"><a href="https://liberty-note.com/2026/04/13/warm-up-challenge-top100/" target="_blank" rel="noopener noreferrer">→</a></div></div>
     </div>
 
-    <div style="text-align:center;margin-top:2rem;">
-      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:1rem;">大会結果の速報はTwitterで！</p>
-      <a href="https://twitter.com/newemolgame" target="_blank" class="btn btn-dark">𝕏 @newemolgame をフォロー</a>
+    <!-- てるチャレオンライン #22 -->
+    <div class="tournament-card" data-tag="grassroots online">
+      <div class="t-date"><div class="month">FEB</div><div class="day">07</div></div>
+      <div class="t-info">
+        <h3><a href="https://liberty-note.com/2026/01/05/terurun-challenge-online-22/" target="_blank" rel="noopener noreferrer">てるチャレオンライン #22</a></h3>
+        <p>📍 オンライン / 主催：てるてるチーム</p>
+        <div class="t-tags">
+          <span class="t-badge grassroots">草の根</span>
+          <span class="t-badge online">オンライン</span>
+        </div>
+        <div class="source-note">大会詳細: <a href="https://liberty-note.com/2026/01/05/terurun-challenge-online-22/" target="_blank" rel="noopener noreferrer">liberty-note.com</a></div>
+      </div>
+      <div class="t-result"><div class="result-label">詳細</div><div class="result-val"><a href="https://liberty-note.com/2026/01/05/terurun-challenge-online-22/" target="_blank" rel="noopener noreferrer">→</a></div></div>
     </div>
+
+    <div style="text-align:center;margin-top:2.5rem;">
+      <p style="font-size:0.85rem;color:var(--gray);margin-bottom:1rem;">最新の大会カレンダーはこちら</p>
+      <a href="https://liberty-note.com/double-battle-event-calendar/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-right:0.75rem;">📅 イベントカレンダーを見る</a>
+      <a href="https://twitter.com/newemolgame" target="_blank" rel="noopener noreferrer" class="btn btn-outline">𝕏 @newemolgame をフォロー</a>
+    </div>
+
   </main>
 
   <aside class="sidebar">
     <div class="sidebar-widget emolga-widget">
       <img class="sidebar-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/587.png" alt="エモンガ">
-      <div class="widget-title"><span>🏆</span>大会情報</div>
-      <p>WCS・公式大会・草の根大会の情報をまとめています！エモンガ使いの活躍を応援しています⚡</p>
+      <div class="widget-title"><span>🏆</span>大会情報について</div>
+      <p>公式大会・草の根大会の結果をまとめています。大会名をクリックすると Liberty Note の詳細記事へ移動します。</p>
     </div>
 
     <div class="sidebar-widget">
-      <div class="widget-title"><span>📅</span>直近のスケジュール</div>
+      <div class="widget-title"><span>📅</span>最近の大会</div>
       <ul style="list-style:none;font-size:0.8rem;">
-        <li style="padding:0.5rem 0;border-bottom:1px solid var(--gray-light);display:flex;gap:0.5rem;align-items:center;">
-          <span style="background:var(--accent);color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;">5/10</span>WCS2026 Day1
+        <li style="padding:0.5rem 0;border-bottom:1px solid var(--gray-light);display:flex;gap:0.5rem;align-items:flex-start;">
+          <span style="background:var(--yellow);color:var(--dark);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;margin-top:0.15rem;">定期</span>
+          <a href="https://liberty-note.com/2026/04/05/terurun-challenge-daily-announce/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);">てるチャレDaily</a>
         </li>
-        <li style="padding:0.5rem 0;border-bottom:1px solid var(--gray-light);display:flex;gap:0.5rem;align-items:center;">
-          <span style="background:var(--sky);color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;">5/17</span>てるチャレ #42
+        <li style="padding:0.5rem 0;border-bottom:1px solid var(--gray-light);display:flex;gap:0.5rem;align-items:flex-start;">
+          <span style="background:var(--sky);color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;margin-top:0.15rem;">5/5</span>
+          <a href="https://liberty-note.com/2026/05/05/global-challenge-2026-top1000/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);">グローバルチャレンジ2026</a>
         </li>
-        <li style="padding:0.5rem 0;display:flex;gap:0.5rem;align-items:center;">
-          <span style="background:var(--green);color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;">5/24</span>PJCS2026本戦
+        <li style="padding:0.5rem 0;border-bottom:1px solid var(--gray-light);display:flex;gap:0.5rem;align-items:flex-start;">
+          <span style="background:#4caf7d;color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;margin-top:0.15rem;">4/25</span>
+          <a href="https://liberty-note.com/2026/03/17/terurun-challenge-champions-1-offline/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);">てるチャレChampions #1</a>
+        </li>
+        <li style="padding:0.5rem 0;display:flex;gap:0.5rem;align-items:flex-start;">
+          <span style="background:#4caf7d;color:white;border-radius:4px;padding:0.1rem 0.4rem;font-size:0.65rem;font-weight:700;flex-shrink:0;margin-top:0.15rem;">4/12</span>
+          <a href="https://liberty-note.com/2026/04/14/terurun-challenge-champions-0-online-result/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);">てるチャレChampions #0</a>
         </li>
       </ul>
     </div>
@@ -182,15 +255,22 @@
     <div class="sidebar-widget">
       <div class="widget-title"><span>🔗</span>関連ページ</div>
       <ul style="list-style:none;font-size:0.82rem;">
-        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);"><a href="builds.html" style="color:var(--sky-dark);">→ 上位構築記事</a></li>
-        <li style="padding:0.4rem 0;"><a href="regulation.html" style="color:var(--sky-dark);">→ レギュレーション確認</a></li>
+        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">
+          <a href="https://liberty-note.com/double-battle-event-calendar/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-dark);">→ ダブルバトルイベントカレンダー</a>
+        </li>
+        <li style="padding:0.4rem 0;border-bottom:1px solid var(--gray-light);">
+          <a href="builds.html" style="color:var(--sky-dark);">→ 上位構築記事</a>
+        </li>
+        <li style="padding:0.4rem 0;">
+          <a href="regulation.html" style="color:var(--sky-dark);">→ レギュレーション確認</a>
+        </li>
       </ul>
     </div>
 
-    <div class="sidebar-widget twitter-widget">
+    <div class="sidebar-widget">
       <div class="widget-title"><span>🐦</span>大会速報</div>
       <p style="font-size:0.8rem;color:var(--gray);">大会結果はTwitterでリアルタイム更新！</p>
-      <a class="twitter-btn" href="https://twitter.com/newemolgame" target="_blank">𝕏 @newemolgame</a>
+      <a class="twitter-btn" href="https://twitter.com/newemolgame" target="_blank" rel="noopener noreferrer">𝕏 @newemolgame</a>
     </div>
   </aside>
 </div>
@@ -217,12 +297,12 @@
       <h4>サイト情報</h4>
       <ul>
         <li><a href="#">運営紹介</a></li>
-        <li><a href="https://twitter.com/newemolgame" target="_blank">お問い合わせ</a></li>
+        <li><a href="https://twitter.com/newemolgame" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
         <li><a href="#">プライバシーポリシー</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 New Emolgame — Pokémon © Nintendo / Game Freak. Fan site.</div>
+  <div class="footer-bottom">© 2026 New Emolgame — Pokémon © Nintendo / Game Freak. Fan site. 大会情報は <a href="https://liberty-note.com/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-light);">Liberty Note</a> を参照。</div>
 </footer>
 
 <script>
