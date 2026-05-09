@@ -26,12 +26,27 @@
     .type-flying   { background:#89aade; }
     .type-water    { background:#6390f0; }
     .type-fire     { background:#ee8130; }
+    .lang-toggle {
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .lang-toggle:hover { background: var(--sky-dark); }
   </style>
+  <script src="lang.js" defer></script>
 </head>
 <body>
 
 <div class="topbar">
-  <span>⚡ ポケモン構築紹介専門メディア</span>
+  <span data-i18n="topbar.tagline">⚡ ポケモン構築紹介専門メディア</span>
   <span><a href="https://twitter.com/newemolgame" target="_blank">Twitter @newemolgame</a></span>
 </div>
 
@@ -41,17 +56,18 @@
       <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
       <div class="logo-text">
         <span class="main">New Emolgame</span>
-        <span class="sub">ポケモン構築紹介メディア</span>
+        <span class="sub" data-i18n="header.tagline">ポケモン構築紹介メディア</span>
       </div>
     </a>
     <nav class="header-nav">
-      <a href="index.html">トップ</a>
-      <a href="builds.html">構築紹介</a>
-      <a href="regulation.html" class="active">レギュレーション</a>
-      <a href="tournament.html">大会情報</a>
-      <a href="beginner.html">初心者向け</a>
+      <a href="index.html" data-i18n="nav.top">トップ</a>
+      <a href="builds.html" data-i18n="nav.builds">構築紹介</a>
+      <a href="regulation.html" class="active" data-i18n="nav.regulation">レギュレーション</a>
+      <a href="tournament.html" data-i18n="nav.tournament">大会情報</a>
+      <a href="beginner.html" data-i18n="nav.beginner">初心者向け</a>
     </nav>
-    <div class="header-search">🔍&nbsp; キーワード検索</div>
+    <div class="header-search" data-i18n="header.search">🔍&nbsp; キーワード検索</div>
+    <button class="lang-toggle" aria-label="Switch language">EN</button>
   </div>
 </header>
 
@@ -60,8 +76,8 @@
     <img class="page-hero-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif" alt="エモンガ" style="image-rendering:pixelated;width:80px;height:80px;">
     <div class="page-hero-text">
       <div class="breadcrumb">トップ &gt; レギュレーション</div>
-      <h1>📋 レギュレーション解説</h1>
-      <p>現行・過去のレギュレーションをわかりやすく解説！エモンガが使えるかもチェックできます。</p>
+      <h1 data-i18n="reg.hero.h1">📋 レギュレーション解説</h1>
+      <p data-i18n="reg.hero.desc">現行・過去のレギュレーションをわかりやすく解説！エモンガが使えるかもチェックできます。</p>
     </div>
   </div>
 </div>
@@ -187,10 +203,10 @@
         <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
         <span class="footer-logo-text">New Emolgame</span>
       </div>
-      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
+      <p data-i18n="footer.desc">エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
     </div>
     <div class="footer-col">
-      <h4>コンテンツ</h4>
+      <h4 data-i18n="footer.content">コンテンツ</h4>
       <ul>
         <li><a href="builds.html">構築記事</a></li>
         <li><a href="tournament.html">大会情報</a></li>
@@ -199,7 +215,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>サイト情報</h4>
+      <h4 data-i18n="footer.siteinfo">サイト情報</h4>
       <ul>
         <li><a href="#">運営紹介</a></li>
         <li><a href="https://twitter.com/newemolgame" target="_blank">お問い合わせ</a></li>

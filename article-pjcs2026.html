@@ -131,12 +131,27 @@
       .footer-inner { grid-template-columns: 1fr; }
       .header-nav { display: none; }
     }
+    .lang-toggle {
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .lang-toggle:hover { background: var(--sky-dark); }
   </style>
+  <script src="lang.js" defer></script>
 </head>
 <body>
 
 <div class="topbar">
-  <span>⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
+  <span data-i18n="topbar.tagline">⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
   <span><a href="https://twitter.com/newemolgame" target="_blank" rel="noopener noreferrer">Twitter</a> &nbsp;|&nbsp; <a href="#">お問い合わせ</a></span>
 </div>
 
@@ -146,24 +161,25 @@
       <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
       <div class="logo-text">
         <span class="main">New Emolgame</span>
-        <span class="sub">ポケモン構築紹介メディア</span>
+        <span class="sub" data-i18n="header.tagline">ポケモン構築紹介メディア</span>
       </div>
     </a>
     <nav class="header-nav">
-      <a href="index.html">トップ</a>
-      <a href="builds.html" class="active">構築記事</a>
-      <a href="regulation.html">レギュレーション</a>
-      <a href="tournament.html">大会情報</a>
-      <a href="beginner.html">初心者向け</a>
+      <a href="index.html" data-i18n="nav.top">トップ</a>
+      <a href="builds.html" class="active" data-i18n="nav.builds">構築記事</a>
+      <a href="regulation.html" data-i18n="nav.regulation">レギュレーション</a>
+      <a href="tournament.html" data-i18n="nav.tournament">大会情報</a>
+      <a href="beginner.html" data-i18n="nav.beginner">初心者向け</a>
     </nav>
-    <button class="header-search" aria-label="検索">🔍&nbsp; キーワード検索</button>
+    <button class="header-search" aria-label="検索" data-i18n="header.search">🔍&nbsp; キーワード検索</button>
+    <button class="lang-toggle" aria-label="Switch language">EN</button>
   </div>
 </header>
 
 <nav class="breadcrumb">
   <a href="index.html">トップ</a>
   <span>›</span>
-  <a href="#">構築記事</a>
+  <a href="builds.html" data-i18n="article.breadcrumb.builds">構築記事</a>
   <span>›</span>
   <span>PJCS2026予選 上位使用構築まとめ — エモンガ採用率15%の衝撃</span>
 </nav>
@@ -333,7 +349,7 @@
     </div>
 
     <div class="article-section">
-      <h2>大会での戦績・まとめ</h2>
+      <h2 data-i18n="article.results">大会での戦績・まとめ</h2>
       <div class="record-grid">
         <div class="record-box"><div class="val">5</div><div class="label">エモンガ採用者（上位16名中）</div></div>
         <div class="record-box"><div class="val">1位</div><div class="label">エモンガ採用者の最高成績</div></div>
@@ -344,7 +360,7 @@
     </div>
 
     <div class="article-section">
-      <h2>まとめ・感想</h2>
+      <h2 data-i18n="article.summary">まとめ・感想</h2>
       <div class="summary-box">
         <p>PJCS2026予選でエモンガが上位15%の採用率を記録したことは、ポケモン対戦史における新たな1ページです。長らく「使えないポケモン」と言われてきたエモンガが環境に食い込んできた今、エモンガを軸にした構築研究がより盛んになることを期待します。</p>
       </div>
@@ -360,14 +376,14 @@
         <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
         <span class="footer-logo-text">New Emolgame</span>
       </div>
-      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。ダブルバトルの最前線をお届けします。</p>
+      <p data-i18n="footer.desc">エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。ダブルバトルの最前線をお届けします。</p>
     </div>
     <div class="footer-col">
-      <h4>コンテンツ</h4>
+      <h4 data-i18n="footer.content">コンテンツ</h4>
       <ul><li>構築記事</li><li>大会情報</li><li>育成論</li><li>初心者向け</li><li>エモンガ特集</li></ul>
     </div>
     <div class="footer-col">
-      <h4>サイト情報</h4>
+      <h4 data-i18n="footer.siteinfo">サイト情報</h4>
       <ul><li>運営紹介</li><li>構築記事を投稿する</li><li>お問い合わせ</li><li>プライバシーポリシー</li></ul>
     </div>
   </div>

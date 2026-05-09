@@ -82,6 +82,28 @@ const TRANSLATIONS = {
     'search.placeholder': '記事タイトル・ポケモン名で検索…',
     'search.hint':        'キーワードを入力してください',
     'search.noresult':    'に一致する記事が見つかりませんでした',
+
+    // builds.html
+    'builds.hero.h1':   '📖 構築記事',
+    'builds.hero.desc': '歴代の構築記事をまとめています。レギュレーション・大会別に絞り込めます。',
+    'builds.section':   '📋 すべての構築記事',
+
+    // regulation.html
+    'reg.hero.h1':   '📋 レギュレーション',
+    'reg.hero.desc': '現行・過去のレギュレーションをまとめています。',
+
+    // beginner.html
+    'beginner.hero.h1':   '🔰 初心者向けガイド',
+    'beginner.hero.desc': 'ダブルバトルをはじめたい方向けの入門ガイドです。',
+
+    // article 共通
+    'article.back':               '← 記事一覧に戻る',
+    'article.breadcrumb.builds':  '構築記事',
+    'article.concept':            '構築コンセプト',
+    'article.members':            '構築メンバー',
+    'article.strategy':           '立ち回り',
+    'article.results':            '大会戦績',
+    'article.summary':            'まとめ',
   },
 
   en: {
@@ -167,6 +189,28 @@ const TRANSLATIONS = {
     'search.placeholder': 'Search by title or Pokémon name…',
     'search.hint':        'Enter a keyword to search',
     'search.noresult':    'No articles found for',
+
+    // builds.html
+    'builds.hero.h1':   '📖 Team Articles',
+    'builds.hero.desc': 'Browse all team articles. Filter by regulation or tournament.',
+    'builds.section':   '📋 All Team Articles',
+
+    // regulation.html
+    'reg.hero.h1':   '📋 Regulations',
+    'reg.hero.desc': 'Current and past VGC regulations explained.',
+
+    // beginner.html
+    'beginner.hero.h1':   '🔰 Beginner\'s Guide',
+    'beginner.hero.desc': 'An introductory guide for those starting out in Double Battles.',
+
+    // article 共通
+    'article.back':               '← Back to Articles',
+    'article.breadcrumb.builds':  'Team Articles',
+    'article.concept':            'Team Concept',
+    'article.members':            'Team Members',
+    'article.strategy':           'Strategy',
+    'article.results':            'Tournament Results',
+    'article.summary':            'Summary',
   }
 };
 
@@ -185,6 +229,27 @@ function applyLang(lang) {
   // Toggle button label
   document.querySelectorAll('.lang-toggle').forEach(btn => {
     btn.textContent = lang === 'jp' ? 'EN' : 'JP';
+  });
+  // 色違いスワップ（EN→shiny, JP→通常）
+  const SHINY_MAP = {
+    'sprites/pokemon/587.png':
+      'sprites/pokemon/shiny/587.png',
+    'sprites/pokemon/other/official-artwork/587.png':
+      'sprites/pokemon/other/official-artwork/shiny/587.png',
+    'sprites/pokemon/other/home/587.png':
+      'sprites/pokemon/other/home/shiny/587.png',
+  };
+  document.querySelectorAll('img[src*="587"]').forEach(img => {
+    const src = img.getAttribute('src');
+    if (lang === 'en') {
+      for (const [normal, shiny] of Object.entries(SHINY_MAP)) {
+        if (src.includes(normal)) { img.src = img.src.replace(normal, shiny); break; }
+      }
+    } else {
+      for (const [normal, shiny] of Object.entries(SHINY_MAP)) {
+        if (src.includes(shiny)) { img.src = img.src.replace(shiny, normal); break; }
+      }
+    }
   });
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang === 'jp' ? 'ja' : 'en';
