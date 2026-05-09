@@ -235,11 +235,11 @@
       <p data-i18n="train.base.p1">エモンガ（No.587）は電気・飛行タイプの二足歩行リス型ポケモン。特性「ふゆう」により地面技が完全無効となるのが最大の特長です。種族値合計472と控えめですが、素早さ103が光り、サポート役として幅広い構築に組み込めます。</p>
       <div class="base-stats">
         <div class="stat-item stat-hp"><div class="stat-name">HP</div><div class="stat-val">55</div></div>
-        <div class="stat-item stat-atk"><div class="stat-name">こうげき</div><div class="stat-val">75</div></div>
-        <div class="stat-item stat-def"><div class="stat-name">ぼうぎょ</div><div class="stat-val">60</div></div>
-        <div class="stat-item stat-spa"><div class="stat-name">とくこう</div><div class="stat-val">75</div></div>
-        <div class="stat-item stat-spd"><div class="stat-name">とくぼう</div><div class="stat-val">60</div></div>
-        <div class="stat-item stat-spe"><div class="stat-name">すばやさ</div><div class="stat-val">103</div></div>
+        <div class="stat-item stat-atk"><div class="stat-name" data-i18n="stat.atk">こうげき</div><div class="stat-val">75</div></div>
+        <div class="stat-item stat-def"><div class="stat-name" data-i18n="stat.def">ぼうぎょ</div><div class="stat-val">60</div></div>
+        <div class="stat-item stat-spa"><div class="stat-name" data-i18n="stat.spa">とくこう</div><div class="stat-val">75</div></div>
+        <div class="stat-item stat-spd"><div class="stat-name" data-i18n="stat.spd">とくぼう</div><div class="stat-val">60</div></div>
+        <div class="stat-item stat-spe"><div class="stat-name" data-i18n="stat.spe">すばやさ</div><div class="stat-val">103</div></div>
       </div>
       <p data-i18n="train.base.ability"><strong>特性：</strong>ふゆう（地面タイプの技・じならし・どろかけを無効化）/ モーター（使わない）</p>
       <p data-i18n="train.base.type"><strong>タイプ：</strong>でんき・ひこう</p>
@@ -367,40 +367,40 @@
         <tbody>
           <tr>
             <td><span data-i18n="move.discharge">ほうでん</span></td>
-            <td><span class="type-badge type-electric">でんき</span></td>
-            <td>特殊</td>
+            <td><span class="type-badge type-electric" data-i18n="type.electric">でんき</span></td>
+            <td data-i18n="cat.special">特殊</td>
             <td>80</td>
             <td>100</td>
             <td data-i18n="train.move.discharge.desc">全体攻撃・30%麻痺。ダブルバトルで両サイドに届く主力技。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.thunderbolt">１０まんボルト</span></td>
-            <td><span class="type-badge type-electric">でんき</span></td>
-            <td>特殊</td>
+            <td><span class="type-badge type-electric" data-i18n="type.electric">でんき</span></td>
+            <td data-i18n="cat.special">特殊</td>
             <td>90</td>
             <td>100</td>
             <td data-i18n="train.move.thunderbolt.desc">単体電気技の主力。高威力・安定命中で使いやすい。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.thunder">かみなり</span></td>
-            <td><span class="type-badge type-electric">でんき</span></td>
-            <td>特殊</td>
+            <td><span class="type-badge type-electric" data-i18n="type.electric">でんき</span></td>
+            <td data-i18n="cat.special">特殊</td>
             <td>110</td>
             <td>70</td>
             <td data-i18n="train.move.thunder.desc">雨天候下で命中100%。カイオーガとのシナジーで採用価値大。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.acrobatics">アクロバット</span></td>
-            <td><span class="type-badge" style="background:#A890F0">ひこう</span></td>
-            <td>物理</td>
+            <td><span class="type-badge" style="background:#A890F0" data-i18n="type.flying">ひこう</span></td>
+            <td data-i18n="cat.physical">物理</td>
             <td>55/110</td>
             <td>100</td>
             <td data-i18n="train.move.acrobatics.desc">持ち物なし時に威力2倍。でんきだまを使用した後に威力110に。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.uturn">とんぼがえり</span></td>
-            <td><span class="type-badge" style="background:#A890F0">ひこう</span></td>
-            <td>物理</td>
+            <td><span class="type-badge" style="background:#A890F0" data-i18n="type.flying">ひこう</span></td>
+            <td data-i18n="cat.physical">物理</td>
             <td>70</td>
             <td>100</td>
             <td data-i18n="train.move.uturn.desc">打った後に交代できる。スイッチ戦術と組み合わせて使う。</td>
@@ -421,29 +421,29 @@
         <tbody>
           <tr>
             <td><span data-i18n="move.thunderwave">でんじは</span></td>
-            <td><span class="type-badge type-electric">でんき</span></td>
-            <td>変化</td>
+            <td><span class="type-badge type-electric" data-i18n="type.electric">でんき</span></td>
+            <td data-i18n="cat.status">変化</td>
             <td class="priority-cell">0</td>
             <td data-i18n="train.move.thunderwave.desc">相手を麻痺状態にする。素早さ1/2化で速い相手を抑制できる強力なサポート。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.encore">アンコール</span></td>
-            <td><span class="type-badge type-normal">ノーマル</span></td>
-            <td>変化</td>
+            <td><span class="type-badge type-normal" data-i18n="type.normal">ノーマル</span></td>
+            <td data-i18n="cat.status">変化</td>
             <td class="priority-cell">0</td>
             <td data-i18n="train.move.encore.desc">相手の直前の技を3ターン強制継続。積み技やトリル展開を封じる技。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.protect">まもる</span></td>
-            <td><span class="type-badge type-normal">ノーマル</span></td>
-            <td>変化</td>
+            <td><span class="type-badge type-normal" data-i18n="type.normal">ノーマル</span></td>
+            <td data-i18n="cat.status">変化</td>
             <td class="priority-cell">+4</td>
             <td data-i18n="train.move.protect.desc">このターン全ての技を防ぐ。ダブルバトルで必須の生存・調整技。</td>
           </tr>
           <tr>
             <td><span data-i18n="move.icywind">こごえるかぜ</span></td>
-            <td><span class="type-badge" style="background:#98D8D8;color:#333">こおり</span></td>
-            <td>特殊</td>
+            <td><span class="type-badge" style="background:#98D8D8;color:#333" data-i18n="type.ice">こおり</span></td>
+            <td data-i18n="cat.special">特殊</td>
             <td class="priority-cell">0</td>
             <td data-i18n="train.move.icywind.desc">相手全体の素早さを1段階下げる。スピードコントロールに優れる全体技。</td>
           </tr>
@@ -455,15 +455,15 @@
       <h2 data-i18n="train.type.h2">タイプ相性一覧</h2>
       <p data-i18n="train.type.p1">でんき・ひこうの複合タイプによるタイプ相性です。「ふゆう」により地面技も無効になる点に注意。</p>
       <div class="type-chart">
-        <div class="type-cell weak4"><div class="type-name">いわ</div><div class="multiplier">×4</div></div>
-        <div class="type-cell weak2"><div class="type-name">こおり</div><div class="multiplier">×2</div></div>
-        <div class="type-cell immune"><div class="type-name">じめん</div><div class="multiplier">×0</div></div>
-        <div class="type-cell immune"><div class="type-name">でんき</div><div class="multiplier">×0</div></div>
-        <div class="type-cell half"><div class="type-name">くさ</div><div class="multiplier">×½</div></div>
-        <div class="type-cell half"><div class="type-name">かくとう</div><div class="multiplier">×½</div></div>
-        <div class="type-cell half"><div class="type-name">むし</div><div class="multiplier">×½</div></div>
-        <div class="type-cell half"><div class="type-name">はがね</div><div class="multiplier">×½</div></div>
-        <div class="type-cell normal-res"><div class="type-name">その他</div><div class="multiplier">×1</div></div>
+        <div class="type-cell weak4"><div class="type-name" data-i18n="type.rock">いわ</div><div class="multiplier">×4</div></div>
+        <div class="type-cell weak2"><div class="type-name" data-i18n="type.ice">こおり</div><div class="multiplier">×2</div></div>
+        <div class="type-cell immune"><div class="type-name" data-i18n="type.ground">じめん</div><div class="multiplier">×0</div></div>
+        <div class="type-cell immune"><div class="type-name" data-i18n="type.electric">でんき</div><div class="multiplier">×0</div></div>
+        <div class="type-cell half"><div class="type-name" data-i18n="type.grass">くさ</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name" data-i18n="type.fighting">かくとう</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name" data-i18n="type.bug">むし</div><div class="multiplier">×½</div></div>
+        <div class="type-cell half"><div class="type-name" data-i18n="type.steel">はがね</div><div class="multiplier">×½</div></div>
+        <div class="type-cell normal-res"><div class="type-name" data-i18n="type.other">その他</div><div class="multiplier">×1</div></div>
       </div>
       <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--gray)" data-i18n="train.type.note">※いわタイプに4倍弱点を持つのが最大の弱点。いわなだれ・ストーンエッジには特に注意が必要です。</p>
     </div>

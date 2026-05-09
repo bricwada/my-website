@@ -240,20 +240,22 @@ const TRANSLATIONS = {
     'beg.twitter.desc':          '初心者の質問も大歓迎です！',
 
     // ポケモン名（poke.）
-    'poke.emolga':      'エモンガ',
-    'poke.kyogre':      'カイオーガ',
-    'poke.volcarona':   'ウルガモス',
-    'poke.landorus':    'ランドロス（霊獣）',
-    'poke.gardevoir':   'サーナイト',
-    'poke.incineroar':  'ガオガエン',
-    'poke.rillaboom':   'ゴリランダー',
-    'poke.urshifu':     'ウーラオス（いちげき）',
-    'poke.porygon2':    'ポリゴン2',
-    'poke.torkoal':     'コータス',
-    'poke.mimikyu':     'ミミッキュ',
-    'poke.rhyperior':   'ドサイドン',
-    'poke.fluttermane': 'ハバタクカミ',
-    'poke.indeedee':    'インドラ',
+    'poke.emolga':        'エモンガ',
+    'poke.kyogre':        'カイオーガ',
+    'poke.volcarona':     'ウルガモス',
+    'poke.landorus':      'ランドロス（霊獣）',
+    'poke.gardevoir':     'サーナイト',
+    'poke.incineroar':    'ガオガエン',
+    'poke.rillaboom':     'ゴリランダー',
+    'poke.urshifu':       'ウーラオス（いちげき）',
+    'poke.urshifurapid':  'ウーラオス（れんげき）',
+    'poke.porygon2':      'ポリゴン2',
+    'poke.torkoal':       'コータス',
+    'poke.mimikyu':       'ミミッキュ',
+    'poke.rhyperior':     'ドサイドン',
+    'poke.fluttermane':   'ハバタクカミ',
+    'poke.indeedee':      'インドラ',
+    'poke.miraidon':      'ミライドン',
 
     // 技名（move.）
     'move.discharge':     'ほうでん',
@@ -285,6 +287,21 @@ const TRANSLATIONS = {
     'move.shadowball':    'シャドーボール',
     'move.bulldoze':      'じならし',
     'move.thunderbolt':   '１０まんボルト',
+    'move.eruption':      'ふんか',
+    'move.helpinghand':   'てだすけ',
+    'move.triattack':     'トライアタック',
+    'move.foulplay':      'イカサマ',
+    'move.recover':       'じこさいせい',
+    'move.shadowclaw':    'シャドークロー',
+    'move.shadowsneak':   'かげうち',
+    'move.stoneedge':     'ストーンエッジ',
+    'move.iceshard':      'こおりのつぶて',
+    'move.irontail':      'アイアンテール',
+    'move.wildcharge':    'ワイルドボルト',
+    'move.drillpeck':     'ドリルくちばし',
+    'move.mysticalfire':  'マジカルフレイム',
+    'move.wickedblow':    'あんこくきょうだ',
+    'move.surgingstrikes':'すいりゅうれんだ',
 
     // 持ち物（item.）
     'item.focussash':   'きあいのタスキ',
@@ -295,6 +312,8 @@ const TRANSLATIONS = {
     'item.assaultvest': 'とつげきチョッキ',
     'item.leftovers':   'たべのこし',
     'item.sitrus':      'オボンのみ',
+    'item.miracleseed': 'きせきのタネ',
+    'item.eviolite':    'しんかのきせき',
 
     // 特性（ability.）
     'ability.levitate':       'ふゆう',
@@ -306,6 +325,11 @@ const TRANSLATIONS = {
     'ability.grassysurge':    'グラスメイカー',
     'ability.drought':        'ひでり',
     'ability.protosynthesis': 'こだいかっせい',
+    'ability.unseenfist':     'ふかしのこぶし',
+    'ability.download':       'ダウンロード',
+    'ability.disguise':       'ばけのかわ',
+    'ability.solidrock':      'ハードロック',
+    'ability.tangledfeet':    'ちどりあし',
 
     // テーブルヘッダー（共通）
     'table.pokemon': 'ポケモン',
@@ -463,6 +487,31 @@ const TRANSLATIONS = {
     'train.type.p1':  'でんき・ひこうの複合タイプによるタイプ相性です。「ふゆう」により地面技も無効になる点に注意。',
     'train.type.note': '※いわタイプに4倍弱点を持つのが最大の弱点。いわなだれ・ストーンエッジには特に注意が必要です。',
     'train.summary.p': 'エモンガは種族値こそ低いですが、特性「ふゆう」と素早さ103、豊富な補助技を活かせば十分に戦力になるポケモンです。きあいのタスキを持たせた最速サポート型が最もオーソドックスで扱いやすい育成法です。ぜひあなただけのエモンガを育ててみてください！',
+
+    // ステータス名（stat.）
+    'stat.atk': 'こうげき',
+    'stat.def': 'ぼうぎょ',
+    'stat.spa': 'とくこう',
+    'stat.spd': 'とくぼう',
+    'stat.spe': 'すばやさ',
+
+    // タイプ名（type.）
+    'type.electric': 'でんき',
+    'type.flying':   'ひこう',
+    'type.normal':   'ノーマル',
+    'type.ice':      'こおり',
+    'type.rock':     'いわ',
+    'type.ground':   'じめん',
+    'type.grass':    'くさ',
+    'type.fighting': 'かくとう',
+    'type.bug':      'むし',
+    'type.steel':    'はがね',
+    'type.other':    'その他',
+
+    // 分類（cat.）
+    'cat.special':  '特殊',
+    'cat.physical': '物理',
+    'cat.status':   '変化',
   },
 
   en: {
@@ -708,18 +757,20 @@ const TRANSLATIONS = {
     // ポケモン名（poke.）
     'poke.emolga':      'Emolga',
     'poke.kyogre':      'Kyogre',
-    'poke.volcarona':   'Volcarona',
-    'poke.landorus':    'Landorus (Therian)',
-    'poke.gardevoir':   'Gardevoir',
-    'poke.incineroar':  'Incineroar',
-    'poke.rillaboom':   'Rillaboom',
-    'poke.urshifu':     'Urshifu (Single Strike)',
-    'poke.porygon2':    'Porygon2',
-    'poke.torkoal':     'Torkoal',
-    'poke.mimikyu':     'Mimikyu',
-    'poke.rhyperior':   'Rhyperior',
-    'poke.fluttermane': 'Flutter Mane',
-    'poke.indeedee':    'Indeedee',
+    'poke.volcarona':     'Volcarona',
+    'poke.landorus':      'Landorus (Therian)',
+    'poke.gardevoir':     'Gardevoir',
+    'poke.incineroar':    'Incineroar',
+    'poke.rillaboom':     'Rillaboom',
+    'poke.urshifu':       'Urshifu (Single Strike)',
+    'poke.urshifurapid':  'Urshifu (Rapid Strike)',
+    'poke.porygon2':      'Porygon2',
+    'poke.torkoal':       'Torkoal',
+    'poke.mimikyu':       'Mimikyu',
+    'poke.rhyperior':     'Rhyperior',
+    'poke.fluttermane':   'Flutter Mane',
+    'poke.indeedee':      'Indeedee',
+    'poke.miraidon':      'Miraidon',
 
     // 技名（move.）
     'move.discharge':     'Discharge',
@@ -751,6 +802,21 @@ const TRANSLATIONS = {
     'move.shadowball':    'Shadow Ball',
     'move.bulldoze':      'Bulldoze',
     'move.thunderbolt':   'Thunderbolt',
+    'move.eruption':      'Eruption',
+    'move.helpinghand':   'Helping Hand',
+    'move.triattack':     'Tri Attack',
+    'move.foulplay':      'Foul Play',
+    'move.recover':       'Recover',
+    'move.shadowclaw':    'Shadow Claw',
+    'move.shadowsneak':   'Shadow Sneak',
+    'move.stoneedge':     'Stone Edge',
+    'move.iceshard':      'Ice Shard',
+    'move.irontail':      'Iron Tail',
+    'move.wildcharge':    'Wild Charge',
+    'move.drillpeck':     'Drill Peck',
+    'move.mysticalfire':  'Mystical Fire',
+    'move.wickedblow':    'Wicked Blow',
+    'move.surgingstrikes':'Surging Strikes',
 
     // 持ち物（item.）
     'item.focussash':   'Focus Sash',
@@ -761,6 +827,8 @@ const TRANSLATIONS = {
     'item.assaultvest': 'Assault Vest',
     'item.leftovers':   'Leftovers',
     'item.sitrus':      'Sitrus Berry',
+    'item.miracleseed': 'Miracle Seed',
+    'item.eviolite':    'Eviolite',
 
     // 特性（ability.）
     'ability.levitate':       'Levitate',
@@ -772,6 +840,11 @@ const TRANSLATIONS = {
     'ability.grassysurge':    'Grassy Surge',
     'ability.drought':        'Drought',
     'ability.protosynthesis': 'Protosynthesis',
+    'ability.unseenfist':     'Unseen Fist',
+    'ability.download':       'Download',
+    'ability.disguise':       'Disguise',
+    'ability.solidrock':      'Solid Rock',
+    'ability.tangledfeet':    'Tangled Feet',
 
     // テーブルヘッダー（共通）
     'table.pokemon': 'Pokémon',
@@ -929,6 +1002,31 @@ const TRANSLATIONS = {
     'train.type.p1':  'Type matchups for the Electric/Flying dual type. Note that Levitate also makes Ground moves completely ineffective.',
     'train.type.note': '* The 4× weakness to Rock is the biggest liability. Watch out especially for Rock Slide and Stone Edge.',
     'train.summary.p': 'Emolga\'s base stats may be unimpressive, but by leveraging Levitate, its base 103 Speed, and its broad support movepool, it can absolutely pull its weight. The Max Speed support build with Focus Sash is the most orthodox and easy-to-use approach. Go ahead and raise your very own Emolga!',
+
+    // ステータス名（stat.）
+    'stat.atk': 'Atk',
+    'stat.def': 'Def',
+    'stat.spa': 'SpA',
+    'stat.spd': 'SpD',
+    'stat.spe': 'Spe',
+
+    // タイプ名（type.）
+    'type.electric': 'Electric',
+    'type.flying':   'Flying',
+    'type.normal':   'Normal',
+    'type.ice':      'Ice',
+    'type.rock':     'Rock',
+    'type.ground':   'Ground',
+    'type.grass':    'Grass',
+    'type.fighting': 'Fighting',
+    'type.bug':      'Bug',
+    'type.steel':    'Steel',
+    'type.other':    'Other',
+
+    // 分類（cat.）
+    'cat.special':  'Special',
+    'cat.physical': 'Physical',
+    'cat.status':   'Status',
   }
 };
 
