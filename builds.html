@@ -5,11 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>構築紹介 | New Emolgame</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .lang-toggle {
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .lang-toggle:hover { background: var(--sky-dark); }
+  </style>
+  <script src="lang.js" defer></script>
 </head>
 <body>
 
 <div class="topbar">
-  <span>⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
+  <span data-i18n="topbar.tagline">⚡ ポケモン構築紹介専門メディア — エモンガに魅せられた人たちへ</span>
   <span><a href="https://twitter.com/newemolgame" target="_blank">Twitter @newemolgame</a></span>
 </div>
 
@@ -19,17 +36,18 @@
       <img class="logo-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
       <div class="logo-text">
         <span class="main">New Emolgame</span>
-        <span class="sub">ポケモン構築紹介メディア</span>
+        <span class="sub" data-i18n="header.tagline">ポケモン構築紹介メディア</span>
       </div>
     </a>
     <nav class="header-nav">
-      <a href="index.html">トップ</a>
-      <a href="builds.html" class="active">構築紹介</a>
-      <a href="regulation.html">レギュレーション</a>
-      <a href="tournament.html">大会情報</a>
-      <a href="beginner.html">初心者向け</a>
+      <a href="index.html" data-i18n="nav.top">トップ</a>
+      <a href="builds.html" class="active" data-i18n="nav.builds">構築紹介</a>
+      <a href="regulation.html" data-i18n="nav.regulation">レギュレーション</a>
+      <a href="tournament.html" data-i18n="nav.tournament">大会情報</a>
+      <a href="beginner.html" data-i18n="nav.beginner">初心者向け</a>
     </nav>
-    <div class="header-search">🔍&nbsp; キーワード検索</div>
+    <div class="header-search" data-i18n="header.search">🔍&nbsp; キーワード検索</div>
+    <button class="lang-toggle" aria-label="Switch language">EN</button>
   </div>
 </header>
 
@@ -38,130 +56,130 @@
     <img class="page-hero-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
     <div class="page-hero-text">
       <div class="breadcrumb">トップ &gt; 構築紹介</div>
-      <h1>⚡ 構築紹介</h1>
-      <p>エモンガを軸にした構築からメタ上位まで、実戦で使われた構築を丁寧に紹介！</p>
+      <h1 data-i18n="builds.hero.h1">⚡ 構築紹介</h1>
+      <p data-i18n="builds.hero.desc">エモンガを軸にした構築からメタ上位まで、実戦で使われた構築を丁寧に紹介！</p>
     </div>
   </div>
 </div>
 
 <div class="category-bar">
   <div class="category-inner">
-    <div class="cat-tab active" data-filter="all">すべて</div>
-    <div class="cat-tab" data-filter="wcs">WCS2026</div>
-    <div class="cat-tab" data-filter="official">公式大会</div>
+    <div class="cat-tab active" data-filter="all" data-i18n="cat.all">すべて</div>
+    <div class="cat-tab" data-filter="wcs" data-i18n="cat.wcs">WCS2026</div>
+    <div class="cat-tab" data-filter="official" data-i18n="cat.official">公式大会</div>
   </div>
 </div>
 
 <div class="main-wrap">
   <main>
     <div class="info-box">
-      💡 <strong>構築記事の読み方：</strong>各記事では採用理由・努力値・技構成・選出パターンを解説しています。初心者の方は先に<a href="beginner.html" style="color:var(--sky-dark);font-weight:600;">初心者向けページ</a>をご覧ください！
+      <span data-i18n="builds.info">💡 <strong>構築記事の読み方：</strong>各記事では採用理由・努力値・技構成・選出パターンを解説しています。初心者の方は先に<a href="beginner.html" style="color:var(--sky-dark);font-weight:600;">初心者向けページ</a>をご覧ください！</span>
     </div>
 
     <div class="section-head">
-      <h2>注目の構築</h2>
+      <h2 data-i18n="builds.featured.head">注目の構築</h2>
     </div>
 
-    <div class="featured-card">
+    <a href="article-wcs2026.html" class="featured-card">
       <div class="featured-img">
-        <span class="badge">🏆 WCS2026 予選</span>
+        <span class="badge" data-i18n="builds.featured.badge">🏆 WCS2026 予選</span>
         <img class="featured-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
       </div>
       <div class="featured-body">
         <div>
-          <span class="reg-tag">⚡ レギュレーションJ</span>
-          <h3>【WCS2026予選通過】エモンガ×カイオーガの電気雨パ構築</h3>
-          <p>エモンガの「ふゆう」と「でんきエンジン」を活かし、カイオーガの「あまごい」下でかみなりを連発する構築。選出・立ち回りを徹底解説します。</p>
+          <span class="reg-tag" data-i18n="builds.featured.reg">⚡ レギュレーションJ</span>
+          <h3 data-i18n="builds.featured.title">【WCS2026予選通過】エモンガ×カイオーガの電気雨パ構築</h3>
+          <p data-i18n="builds.featured.desc">エモンガの「ふゆう」と「でんきエンジン」を活かし、カイオーガの「あまごい」下でかみなりを連発する構築。選出・立ち回りを徹底解説します。</p>
         </div>
         <div class="featured-meta">
-          <div class="author-chip"><div class="author-avatar">エ</div><span>エモ太郎 · 2026.05.01</span></div>
+          <div class="author-chip"><div class="author-avatar">エ</div><span data-i18n="builds.featured.author">エモ太郎 · 2026.05.01</span></div>
           <span>👁 12,480</span>
         </div>
       </div>
-    </div>
+    </a>
 
     <div class="section-head" style="margin-top:2rem;">
-      <h2>すべての構築記事</h2>
+      <h2 data-i18n="builds.section">すべての構築記事</h2>
     </div>
 
     <div class="articles-grid" id="build-grid">
 
-      <div class="article-card" data-tag="emolga grassroots">
+      <a href="article-gorilla.html" class="article-card" data-tag="emolga grassroots">
         <div class="card-img bg1">
-          <span class="cat-badge badge-reg">Reg.J</span>
+          <span class="cat-badge badge-reg" data-i18n="badge.regj">Reg.J</span>
           <img class="card-emolga card-emolga-anim" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>エモンガ×ゴリランダーの電気草パ — レート2000到達記念</h3>
+          <h3 data-i18n="builds.card1.title">エモンガ×ゴリランダーの電気草パ — レート2000到達記念</h3>
           <div class="poke-chips"><span class="poke-chip">エモンガ</span><span class="poke-chip">ゴリランダー</span><span class="poke-chip">ランドロス</span><span class="poke-chip">+3</span></div>
           <div class="card-meta"><span>2026.04.28</span><span>👁 4,320</span></div>
         </div>
-      </div>
+      </a>
 
-      <div class="article-card" data-tag="grassroots emolga">
+      <a href="article-trick-room.html" class="article-card" data-tag="grassroots emolga">
         <div class="card-img bg2">
-          <span class="cat-badge badge-team">構築</span>
+          <span class="cat-badge badge-team" data-i18n="badge.team">構築</span>
           <img class="card-emolga card-emolga-front" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>【てるチャレ優勝】エモンガ入りトリックルーム構築の全貌</h3>
+          <h3 data-i18n="builds.card2.title">【てるチャレ優勝】エモンガ入りトリックルーム構築の全貌</h3>
           <div class="poke-chips"><span class="poke-chip">エモンガ</span><span class="poke-chip">ミミッキュ</span><span class="poke-chip">ドサイドン</span><span class="poke-chip">+3</span></div>
           <div class="card-meta"><span>2026.04.22</span><span>👁 3,810</span></div>
         </div>
-      </div>
+      </a>
 
-      <div class="article-card" data-tag="official wcs">
+      <a href="article-pjcs2026.html" class="article-card" data-tag="official wcs">
         <div class="card-img bg3">
-          <span class="cat-badge badge-event">大会</span>
+          <span class="cat-badge badge-event" data-i18n="badge.event">大会</span>
           <img class="card-emolga card-emolga-back" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/587.png" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>PJCS2026予選 上位使用構築まとめ — エモンガ採用率15%の衝撃</h3>
+          <h3 data-i18n="builds.card3.title">PJCS2026予選 上位使用構築まとめ — エモンガ採用率15%の衝撃</h3>
           <div class="poke-chips"><span class="poke-chip">上位まとめ</span><span class="poke-chip">PJCS2026</span></div>
           <div class="card-meta"><span>2026.04.18</span><span>👁 8,950</span></div>
         </div>
-      </div>
+      </a>
 
-      <div class="article-card" data-tag="iku emolga">
+      <a href="article-training.html" class="article-card" data-tag="iku emolga">
         <div class="card-img bg4">
-          <span class="cat-badge badge-iku">育成論</span>
+          <span class="cat-badge badge-iku" data-i18n="badge.iku">育成論</span>
           <img class="card-emolga card-emolga-art" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</h3>
+          <h3 data-i18n="builds.card4.title">【永久保存版】エモンガ完全育成論 — 努力値・持ち物・技構成の全パターン</h3>
           <div class="poke-chips"><span class="poke-chip">育成論</span><span class="poke-chip">エモンガ</span><span class="poke-chip">初心者向け</span></div>
           <div class="card-meta"><span>2026.04.10</span><span>👁 22,140</span></div>
         </div>
-      </div>
+      </a>
 
-      <div class="article-card" data-tag="wcs emolga">
+      <a href="article-wcs2026.html" class="article-card" data-tag="wcs emolga">
         <div class="card-img bg5">
-          <span class="cat-badge badge-wcs">WCS</span>
+          <span class="cat-badge badge-wcs" data-i18n="badge.wcs">WCS</span>
           <img class="card-emolga card-emolga-anim" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/587.gif" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>WCS2026出場権獲得！エモンガ軸バランス構築の全記録</h3>
+          <h3 data-i18n="builds.card5.title">WCS2026出場権獲得！エモンガ軸バランス構築の全記録</h3>
           <div class="poke-chips"><span class="poke-chip">エモンガ</span><span class="poke-chip">ガブリアス</span><span class="poke-chip">ウーラオス</span><span class="poke-chip">+3</span></div>
           <div class="card-meta"><span>2026.04.05</span><span>👁 6,720</span></div>
         </div>
-      </div>
+      </a>
 
-      <div class="article-card" data-tag="grassroots">
+      <a href="article-gorilla.html" class="article-card" data-tag="grassroots">
         <div class="card-img bg6">
-          <span class="cat-badge badge-reg">Reg.J</span>
+          <span class="cat-badge badge-reg" data-i18n="badge.regj">Reg.J</span>
           <img class="card-emolga card-emolga-front" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
         </div>
         <div class="card-body">
-          <h3>エモンガ×ハバタクカミの電気フェアリー構築 — シーズン最終2100</h3>
+          <h3 data-i18n="builds.card6.title">エモンガ×ハバタクカミの電気フェアリー構築 — シーズン最終2100</h3>
           <div class="poke-chips"><span class="poke-chip">エモンガ</span><span class="poke-chip">ハバタクカミ</span><span class="poke-chip">イーユイ</span><span class="poke-chip">+3</span></div>
           <div class="card-meta"><span>2026.03.28</span><span>👁 3,150</span></div>
         </div>
-      </div>
+      </a>
 
     </div>
 
     <div style="text-align:center;padding:2rem 0;">
-      <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">構築記事は随時追加中！Twitterでも最新情報を発信しています。</p>
+      <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;" data-i18n="builds.cta">構築記事は随時追加中！Twitterでも最新情報を発信しています。</p>
       <a href="https://twitter.com/newemolgame" target="_blank" class="btn btn-dark">𝕏 @newemolgame をフォロー</a>
     </div>
   </main>
@@ -169,8 +187,8 @@
   <aside class="sidebar">
     <div class="sidebar-widget emolga-widget">
       <img class="sidebar-emolga" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/587.png" alt="エモンガ">
-      <div class="widget-title"><span>⚡</span>構築記事について</div>
-      <p>実際に対戦で使った構築を、選出・立ち回り・反省点まで丁寧に解説しています！</p>
+      <div class="widget-title"><span>⚡</span><span data-i18n="builds.sidebar.about">構築記事について</span></div>
+      <p data-i18n="builds.sidebar.about.desc">実際に対戦で使った構築を、選出・立ち回り・反省点まで丁寧に解説しています！</p>
     </div>
 
     <div class="sidebar-widget">
@@ -185,7 +203,7 @@
     </div>
 
     <div class="sidebar-widget">
-      <div class="widget-title"><span>🏷️</span>タグで絞り込む</div>
+      <div class="widget-title"><span>🏷️</span><span data-i18n="builds.sidebar.tags">タグで絞り込む</span></div>
       <div class="tag-cloud">
         <span class="tag-pill">エモンガ軸</span><span class="tag-pill">晴れパ</span><span class="tag-pill">雨パ</span>
         <span class="tag-pill">トリルパ</span><span class="tag-pill">Reg.J</span><span class="tag-pill">WCS2026</span>
@@ -195,7 +213,7 @@
 
     <div class="sidebar-widget twitter-widget">
       <div class="widget-title"><span>🐦</span>Twitter / X</div>
-      <p style="font-size:0.8rem;color:var(--gray);">構築のリクエストはTwitterへ！</p>
+      <p style="font-size:0.8rem;color:var(--gray);" data-i18n="builds.twitter.req">構築のリクエストはTwitterへ！</p>
       <a class="twitter-btn" href="https://twitter.com/newemolgame" target="_blank">𝕏 @newemolgame</a>
     </div>
   </aside>
@@ -208,10 +226,10 @@
         <img class="footer-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/587.png" alt="エモンガ">
         <span class="footer-logo-text">New Emolgame</span>
       </div>
-      <p>エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
+      <p data-i18n="footer.desc">エモンガに魅せられたポケモントレーナーたちが集うポケモン構築紹介メディア。</p>
     </div>
     <div class="footer-col">
-      <h4>コンテンツ</h4>
+      <h4 data-i18n="footer.content">コンテンツ</h4>
       <ul>
         <li><a href="builds.html">構築記事</a></li>
         <li><a href="tournament.html">大会情報</a></li>
@@ -220,7 +238,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>サイト情報</h4>
+      <h4 data-i18n="footer.siteinfo">サイト情報</h4>
       <ul>
         <li><a href="#">運営紹介</a></li>
         <li><a href="https://twitter.com/newemolgame" target="_blank">お問い合わせ</a></li>
